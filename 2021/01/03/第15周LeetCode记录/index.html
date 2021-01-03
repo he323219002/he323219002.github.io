@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="贪心算法,二叉树,动态规划,LRU," />
 
 
 
@@ -79,16 +79,22 @@
 
 
 
-<meta name="description" content="描述展示">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jimmy&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="12.22 71. 两地调度公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 123456789输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第15周LeetCode记录">
+<meta property="og:url" content="http://yoursite.com/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Jimmy&#39;s Blog">
-<meta property="og:description" content="描述展示">
+<meta property="og:description" content="12.22 71. 两地调度公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 123456789输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 3">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/25/bst-tree.png">
+<meta property="article:published_time" content="2021-01-03T13:07:01.000Z">
+<meta property="article:modified_time" content="2021-01-03T13:08:52.986Z">
 <meta property="article:author" content="Jimmy">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content=" NexT">
+<meta property="article:tag" content="贪心算法">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="LRU">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/25/bst-tree.png">
 
 
 
@@ -118,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/01/03/第15周LeetCode记录/"/>
 
 
 
 
 
-  <title>Jimmy's Blog</title>
+  <title>第15周LeetCode记录 | Jimmy's Blog</title>
   
 
 
@@ -143,8 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,197 +252,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/" itemprop="url">《redis深度历险》八(字符串和字典)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T21:25:14+08:00">
-                2021-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>SDS（Simple Dynamic String）是一个带长度信息的字节数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct SDS&lt;T&gt; &#123;</span><br><span class="line">	T capacity; &#x2F;&#x2F; 数组容量</span><br><span class="line">	T len; &#x2F;&#x2F; 数组长度</span><br><span class="line">	byte flags； &#x2F;&#x2F; 特殊标识</span><br><span class="line">	byte[] content; &#x2F;&#x2F; 数组内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>content里存储了真正的字符串内容，类似于Java的ArrayList结构，需要比实际内容长度多分配一些冗余空间，capacity表示所分配数组的长度，len表示字符串的实际长度。字符串是可以修改的，要支持append操作，如果数组没有冗余空间，那么追加操作必然涉及到分配新数组，将旧内容复制，append新内容，如果字符串长度很长，这样分配和复制开销就会很大。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Append the specified binary-safe string pointed by &#39;t&#39; of &#39;len&#39; bytes to the * end of the specified sds string &#39;s&#39;.</span><br><span class="line">*</span><br><span class="line">* After the call, the passed sds string is no longer valid and all the</span><br><span class="line">* references must be substituted with the new pointer returned by the call. *&#x2F; sds sdscatlen(sds s, const void *t, size_t len) &#123;</span><br><span class="line">size_t curlen &#x3D; sdslen(s); &#x2F;&#x2F; 原字符串长度</span><br><span class="line">&#x2F;&#x2F; 按需调整空间，如果 capacity 不够容纳追加的内容，就会重新分配字节数组并复制原字 符串的内容到新数组中</span><br><span class="line">s &#x3D; sdsMakeRoomFor(s,len);</span><br><span class="line">if (s &#x3D;&#x3D; NULL) return NULL; &#x2F;&#x2F; 内存不足</span><br><span class="line">memcpy(s+curlen, t, len); &#x2F;&#x2F; 追加目标字符串的内容到字节数组中</span><br><span class="line">sdssetlen(s, curlen+len); &#x2F;&#x2F; 设置追加后的长度值</span><br><span class="line">s[curlen+len] &#x3D; &#39;\0&#39;; &#x2F;&#x2F; 让字符串以\0 结尾，便于调试打印，还可以直接使用 glibc 的字符串</span><br><span class="line">函数进行操作</span><br><span class="line">return s; &#125;</span><br></pre></td></tr></table></figure>
-
-<p>为什么使用泛型T而不使用int，因为字符串较短时，len和capacity可以用byte和short表示，对内存做了极致优化，不同长度的字符串可以使用不同的结构体表示。</p>
-<p>redis规定字符串的长度不得超过512M，创建字符串时，len和capacity一样长，不会分配冗余空间，因为绝大多数场景不会修改字符串。</p>
-<h4 id="embstr-vs-raw"><a href="#embstr-vs-raw" class="headerlink" title="embstr vs raw"></a>embstr vs raw</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set str  abcdefghijklmnopqrstuvwxyz012345678912345678</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; debug object str</span><br><span class="line">Value at:0x7fb20e50d8d0 refcount:1 encoding:embstr serializedlength:45 lru:11843071 lru_seconds_idle:8</span><br><span class="line">127.0.0.1:6379&gt; set codehole abcdefghijklmnopqrstuvwxyz0123456789123456789</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; debug object codehole</span><br><span class="line">Value at:0x7fb20f90b690 refcount:1 encoding:raw serializedlength:46 lru:11843088 lru_seconds_idle:5</span><br></pre></td></tr></table></figure>
-
-<p>所有的redis对象都有下面这个结构头</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">struct RedisObject &#123;</span><br><span class="line">  int4 type; &#x2F;&#x2F; 4bits</span><br><span class="line">  int4 encoding; &#x2F;&#x2F; 4bits</span><br><span class="line">  int24 lru; &#x2F;&#x2F; 24bits</span><br><span class="line">  int32 refcount; &#x2F;&#x2F; 4bytes</span><br><span class="line">  void *ptr; &#x2F;&#x2F; 8bytes，64-bit system</span><br><span class="line">&#125; robj;</span><br></pre></td></tr></table></figure>
-
-<p>不同的对象具有不同的类型 type(4bit)，同一个类型的 type 会有不同的存储形式 encoding(4bit)，为了记录对象的 LRU 信息，使用了 24 个 bit 来记录 LRU 信息。每个对 象都有个引用计数，当引用计数为零时，对象就会被销毁，内存被回收。ptr 指针将指向对 象内容 (body) 的具体存储位置。这样一个 RedisObject 对象头需要占据 16 字节的存储空 间。</p>
-<p>SDS对象头最少时19（16+3）字节</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct SDS &#123;</span><br><span class="line">  int8 capacity; &#x2F;&#x2F; 1byte</span><br><span class="line">  int8 len; &#x2F;&#x2F; 1byte</span><br><span class="line">  int8 flags; &#x2F;&#x2F; 1byte</span><br><span class="line">  byte[] content; &#x2F;&#x2F; 内联数组，长度为 capacity</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而内存分配器 jemalloc/tcmalloc 等分配内存大小的单位都是 2、4、8、16、32、64 等 等，为了能容纳一个完整的 embstr 对象，jemalloc 最少会分配 32 字节的空间，如果字符 串再稍微长一点，那就是 64 字节的空间。如果总体超出了 64 字节，Redis 认为它是一个 大字符串，不再使用 emdstr 形式存储，而该用 raw 形式。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201118142626169-2002520742.png" alt=""></p>
-<p> SDS 结构体中的 content 中的字符串是以字节\0 结尾的字符串，之所以 多出这样一个字节，是为了便于直接使用 glibc 的字符串处理函数，以及为了便于字符串的 调试打印输出。</p>
-<p>看上面这张图可以算出，留给 content 的长度最多只有 45(64-19) 字节了。字符串又是</p>
-<p>以\0 结尾，所以 embstr 最大能容纳的字符串长度就是 44。</p>
-<h4 id="扩容策略"><a href="#扩容策略" class="headerlink" title="扩容策略"></a>扩容策略</h4><p>字符串在长度小于 1M 之前，扩容空间采用加倍策略，也就是保留 100% 的冗余空 间。当长度超过 1M 之后，为了避免加倍后的冗余空间过大而导致浪费，每次扩容只会多分 配 1M 大小的冗余空间。</p>
-<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><h4 id="dict内部结构"><a href="#dict内部结构" class="headerlink" title="dict内部结构"></a>dict内部结构</h4><p>dict结构内层包含两个hashtable，通常只有一个hashtable有值，但是在dict扩容缩容时，需要分配新的hashtable，然后进行渐进式搬迁，搬迁完毕后，旧的hashtable被删除。</p>
-<img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201120104256521-486726635.png" style="zoom:50%;" />
-
-<p>hashtable几乎和java重的hashmap数据结构一样，数组+链表。</p>
-<h4 id="查找过程"><a href="#查找过程" class="headerlink" title="查找过程"></a>查找过程</h4><p>元素是在第二维的链表上，首先找出元素对应的链表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func get(key)&#123;</span><br><span class="line">	let index &#x3D; hash_func(key)%size;</span><br><span class="line">	let entry &#x3D; table[index];</span><br><span class="line">	while(entry !&#x3D; null)&#123;</span><br><span class="line">		if entry.key &#x3D; target&#123;</span><br><span class="line">			return entry.value;</span><br><span class="line">		&#125;</span><br><span class="line">		entry &#x3D; entry.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>hash_func，会将key映射为一个整数，不同的key会被映射成分布均匀的散乱整数，只有hash值均匀了，整个hashtable才是平衡的，所有的二维链表的长度就不会差很远，比较稳定。</p>
-<h4 id="扩容条件"><a href="#扩容条件" class="headerlink" title="扩容条件"></a>扩容条件</h4><p>正常情况下，当 hash 表中元素的个数等于第一维数组的长度时，就会开始扩容，扩容 的新数组是原数组大小的 2 倍。不过如果 Redis 正在做 bgsave，为了减少内存页的过多分 离 (Copy On Write)，Redis 尽量不去扩容 (dict_can_resize)，但是如果 hash 表已经非常满 了，元素的个数已经达到了第一维数组长度的 5 倍 (dict_force_resize_ratio)，说明 hash 表 已经过于拥挤了，这个时候就会强制扩容。</p>
-<h4 id="缩容条件"><a href="#缩容条件" class="headerlink" title="缩容条件"></a>缩容条件</h4><p>当 hash 表因为元素的逐渐删除变得越来越稀疏时，Redis 会对 hash 表进行缩容来减少</p>
-<p>hash 表的第一维数组空间占用。缩容的条件是元素个数低于数组长度的 10%。缩容不会考 虑 Redis 是否正在做 bgsave。</p>
-<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>Redis里面set的的结构底层实现也是字典，只不过所有的value都是null，其他特性和字典一样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd country china japan usa</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; debug object country</span><br><span class="line">Value at:0x7fb20e60d3f0 refcount:1 encoding:hashtable serializedlength:17 lru:12015767 lru_seconds_idle:9</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -467,9 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="url">第15周LeetCode记录</a></h1>
+          <h1 class="post-title" itemprop="name headline">第15周LeetCode记录</h1>
         
 
         <div class="post-meta">
@@ -551,9 +366,7 @@
       
 
       
-        
-          
-            <h3 id="12-22-71-两地调度"><a href="#12-22-71-两地调度" class="headerlink" title="12.22 71. 两地调度"></a>12.22 71. 两地调度</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
+        <h3 id="12-22-71-两地调度"><a href="#12-22-71-两地调度" class="headerlink" title="12.22 71. 两地调度"></a>12.22 71. 两地调度</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
 <p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：[[10,20],[30,200],[400,50],[30,20]]</span><br><span class="line">输出：110</span><br><span class="line">解释：</span><br><span class="line">第一个人去 A 市，费用为 10。</span><br><span class="line">第二个人去 A 市，费用为 30。</span><br><span class="line">第三个人去 B 市，费用为 50。</span><br><span class="line">第四个人去 B 市，费用为 20。</span><br><span class="line"></span><br><span class="line">最低总费用为 10 + 30 + 50 + 20 &#x3D; 110，每个城市都有一半的人在面试。</span><br></pre></td></tr></table></figure>
 
@@ -605,8 +418,6 @@
 <p>get操作，判断是否存在，不存在返回-1，存在把对应的链表索引换到头部。</p>
 <p>put操作，若存在和get操作类似，不存在则创建一个新的链表节点，放到头部再判断长度，超过规定长度就会从尾部去除。</p>
 
-          
-        
       
     </div>
     
@@ -621,157 +432,46 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="url">读书单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T01:38:07+08:00">
-                2021-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag"># 贪心算法</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"># 二叉树</a>
           
-
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
+            <a href="/tags/LRU/" rel="tag"># LRU</a>
           
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="2020已读"><a href="#2020已读" class="headerlink" title="2020已读"></a>2020已读</h3><ol>
-<li>java核心卷上册（2020.7）</li>
-<li>redis深度历险（2020.10）</li>
-<li>四个春天（2020.11）</li>
-<li>江城（2020.10）</li>
-</ol>
-<h3 id="2021计划读书10本"><a href="#2021计划读书10本" class="headerlink" title="2021计划读书10本"></a>2021计划读书10本</h3><ol>
-<li>日语初级上册</li>
-<li>日语初级下册</li>
-<li>人间失格</li>
-<li>活着</li>
-<li>金粉世家</li>
-<li>深入理解jvm</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" rel="next" title="读书单">
+                <i class="fa fa-chevron-left"></i> 读书单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/" rel="prev" title="《redis深度历险》八(字符串和字典)">
+                《redis深度历险》八(字符串和字典) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -781,10 +481,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -792,6 +493,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -812,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -873,6 +590,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-22-71-两地调度"><span class="nav-number">1.</span> <span class="nav-text">12.22 71. 两地调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路"><span class="nav-number">1.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解"><span class="nav-number">1.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-23-72-最长单词"><span class="nav-number">2.</span> <span class="nav-text">12.23 72. 最长单词</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-1"><span class="nav-number">2.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-26-73-二叉搜索树迭代器"><span class="nav-number">3.</span> <span class="nav-text">12.26 73. 二叉搜索树迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">3.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-2"><span class="nav-number">3.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-26-74-买卖股票的最佳时机"><span class="nav-number">4.</span> <span class="nav-text">12.26 74. 买卖股票的最佳时机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-2"><span class="nav-number">4.1.</span> <span class="nav-text">最优解思路</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解一：动态规划"><span class="nav-number">4.1.1.</span> <span class="nav-text">解一：动态规划</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解二：贪心算法"><span class="nav-number">4.1.2.</span> <span class="nav-text">解二：贪心算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-28-75-LRU缓存机制"><span class="nav-number">5.</span> <span class="nav-text">12.28 75. LRU缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">5.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-3"><span class="nav-number">5.2.</span> <span class="nav-text">最优解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解总结"><span class="nav-number">5.3.</span> <span class="nav-text">最优解总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1013,6 +746,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
