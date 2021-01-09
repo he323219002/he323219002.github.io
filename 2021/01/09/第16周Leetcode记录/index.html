@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="动态规划,背包问题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="12.29 76. 剪绳子给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 123输入: 10输出: 36解释: 10 &amp;#x3D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第16周Leetcode记录">
+<meta property="og:url" content="http://yoursite.com/2021/01/09/%E7%AC%AC16%E5%91%A8Leetcode%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Jimmy&#39;s Blog">
+<meta property="og:description" content="12.29 76. 剪绳子给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 123输入: 10输出: 36解释: 10 &amp;#x3D">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/1496566/202012/1496566-20201229235245774-930869340.png">
+<meta property="og:image" content="https://pic.leetcode-cn.com/fa278029267fedeb06686b784bd322f16b2abf6b61987dc3b5257630570cd38f-377-1.png">
+<meta property="article:published_time" content="2021-01-09T09:42:49.000Z">
+<meta property="article:modified_time" content="2021-01-09T11:06:25.916Z">
+<meta property="article:author" content="Jimmy">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="背包问题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2020.cnblogs.com/blog/1496566/202012/1496566-20201229235245774-930869340.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/09/第16周Leetcode记录/"/>
+
+
+
+
+
+  <title>第16周Leetcode记录 | Jimmy's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jimmy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">二级标题展示</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/09/%E7%AC%AC16%E5%91%A8Leetcode%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第16周Leetcode记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-09T17:42:49+08:00">
+                2021-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/09/%E7%AC%AC16%E5%91%A8Leetcode%E8%AE%B0%E5%BD%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/09/%E7%AC%AC16%E5%91%A8Leetcode%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="12-29-76-剪绳子"><a href="#12-29-76-剪绳子" class="headerlink" title="12.29 76. 剪绳子"></a>12.29 76. 剪绳子</h3><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: 36</span><br><span class="line">解释: 10 &#x3D; 3 + 3 + 4, 3 × 3 × 4 &#x3D; 36</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路"><a href="#最优解思路" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>动态规划：</p>
+<p>对于的正整数 n，当 n≥2 时，可以拆分成至少两个正整数的和。令 k 是拆分出的第一个正整数，则剩下的部分是 n−k，n−k 可以不继续拆分，或者继续拆分成至少两个正整数的和。由于每个正整数对应的最大乘积取决于比它小的正整数对应的最大乘积，因此可以使用动态规划求解。</p>
+<p>dp数组的含义： dp[i] 表示将正整数 i 拆分成至少两个正整数的和之后，这些正整数的最大乘积。<br>边界条件： 0 不是正整数，1 是最小的正整数，0 和 1 都不能拆分，因此 dp[0]=dp[1]=0。<br>状态转移方程：<br>当 i≥2 时，假设对正整数 i 拆分出的第一个正整数是 j（1≤j&lt;i），则有以下两种方案：</p>
+<p>将 i 拆分成 j 和 i−j 的和，且 i−j 不再拆分成多个正整数，此时的乘积是 j×(i−j)；<br>将 i 拆分成 j 和 i−j 的和，且 i−j 继续拆分成多个正整数，此时的乘积是 j×dp[i−j]。<br>因此，当 j 固定时，有 dp[i]=max(j×(i−j),j×dp[i−j])。由于 j 的取值范围是 1 到 i−1，需要遍历所有的 j 得到 dp[i] 的最大值，因此可以得到状态转移方程如下：</p>
+<img src="https://img2020.cnblogs.com/blog/1496566/202012/1496566-20201229235245774-930869340.png" style="zoom:50%;" />
+
+<h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int cuttingRope(int n) &#123;</span><br><span class="line">        int[] dp &#x3D; new int[n + 1];</span><br><span class="line">        for (int i &#x3D; 2; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1; j &lt; i; j++) &#123;</span><br><span class="line">                dp[i]&#x3D; Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解总结"><a href="#最优解总结" class="headerlink" title="最优解总结"></a>最优解总结</h4><p>相当于求出d0,d1,d2….dn, 每次都要依赖之前的结果。</p>
+<h3 id="12-30-77-组合总和"><a href="#12-30-77-组合总和" class="headerlink" title="12.30 77. 组合总和"></a>12.30 77. 组合总和</h3><p>给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nums &#x3D; [1, 2, 3]</span><br><span class="line">target &#x3D; 4</span><br><span class="line"></span><br><span class="line">所有可能的组合为：</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line"></span><br><span class="line">请注意，顺序不同的序列被视作不同的组合。</span><br><span class="line"></span><br><span class="line">因此输出为 7。</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-1"><a href="#最优解思路-1" class="headerlink" title="最优解思路"></a>最优解思路</h4><p><img src="https://pic.leetcode-cn.com/fa278029267fedeb06686b784bd322f16b2abf6b61987dc3b5257630570cd38f-377-1.png" alt="377-1.png"></p>
+<p>“动态规划”的两个步骤是思考“状态”以及“状态转移方程”。</p>
+<p>1、状态</p>
+<p>对于“状态”，我们首先思考能不能就用问题当中问的方式定义状态，上面递归树都画出来了。当然就用问题问的方式。</p>
+<p>dp[i] ：对于给定的由正整数组成且不存在重复数字的数组，和为 i 的组合的个数。</p>
+<p>思考输出什么？因为状态就是问题当中问的方式而定义的，因此输出就是最后一个状态 dp[n]。</p>
+<p>2、状态转移方程</p>
+<p>由上面的树形图，可以很容易地写出状态转移方程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] &#x3D; sum&#123;dp[i - num] for num in nums and if i &gt;&#x3D; num&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>注意：在 0 这一点，我们定义 dp[0] = 1 的，它表示如果 nums 里有一个数恰好等于 target，它单独成为 1 种可能。</p>
+<h4 id="最优解-1"><a href="#最优解-1" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum4(self, nums, target):</span><br><span class="line">        size &#x3D; len(nums)</span><br><span class="line">        if size &#x3D;&#x3D; 0 or target &lt;&#x3D; 0:</span><br><span class="line">            return 0</span><br><span class="line"></span><br><span class="line">        dp &#x3D; [0 for _ in range(target + 1)]</span><br><span class="line">        </span><br><span class="line">        # 这一步很关键，想想为什么 dp[0] 是 1</span><br><span class="line">        # 因为 0 表示空集，空集和它&quot;前面&quot;的元素凑成一种解法，所以是 1</span><br><span class="line">        # 这个值被其它状态参考，设置为 1 是合理的</span><br><span class="line">        </span><br><span class="line">        dp[0] &#x3D; 1</span><br><span class="line"></span><br><span class="line">        for i in range(1, target + 1):</span><br><span class="line">            for j in range(size):</span><br><span class="line">                if i &gt;&#x3D; nums[j]:</span><br><span class="line">                    dp[i] +&#x3D; dp[i - nums[j]]</span><br><span class="line"></span><br><span class="line">        return dp[-1]</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解总结-1"><a href="#最优解总结-1" class="headerlink" title="最优解总结"></a>最优解总结</h4><p>dp[4] = 1+dp[3] 的 数量 加 2+dp[2]的数量 加3+dp[1]的数量，即dp[1]+dp[2]+dp[3],同理，分解其中的每一项所以要判断，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for num in nums:</span><br><span class="line">          if i &gt;&#x3D; num:</span><br></pre></td></tr></table></figure>
+
+<p>只能由比他小的数字构成。一共有0，1，2，到target，所以是target+1项，每一项都会有对应的组合数量。</p>
+<h3 id="12-31-78-目标和"><a href="#12-31-78-目标和" class="headerlink" title="12.31 78. 目标和"></a>12.31 78. 目标和</h3><p>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。</p>
+<p>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入：nums: [1, 1, 1, 1, 1], S: 3</span><br><span class="line">输出：5</span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br><span class="line"></span><br><span class="line">一共有5种方法让最终目标和为3。</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-2"><a href="#最优解思路-2" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>我们用 dp[i][j] 表示用数组中的前 i 个元素，组成和为 j 的方案数。考虑第 i 个数 nums[i]，它可以被添加 + 或 -，因此状态转移方程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] &#x3D; dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]</span><br></pre></td></tr></table></figure>
+
+<p>由于数组中所有数的和不超过 1000，那么 j 的最小值可以达到 -1000。在很多语言中，是不允许数组的下标为负数的，因此我们需要给 dp[i][j] 的第二维预先增加 1000，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j + nums[i] + 1000] +&#x3D; dp[i - 1][j + 1000]</span><br><span class="line">dp[i][j - nums[i] + 1000] +&#x3D; dp[i - 1][j + 1000]</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解-2"><a href="#最优解-2" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int findTargetSumWays(int[] nums, int S) &#123;</span><br><span class="line">        int[][] dp &#x3D; new int[nums.length][2001];</span><br><span class="line">        dp[0][nums[0] + 1000] &#x3D; 1;</span><br><span class="line">        dp[0][-nums[0] + 1000] +&#x3D; 1;</span><br><span class="line">        for (int i &#x3D; 1; i &lt; nums.length; i++) &#123;</span><br><span class="line">            for (int sum &#x3D; -1000; sum &lt;&#x3D; 1000; sum++) &#123;</span><br><span class="line">                if (dp[i - 1][sum + 1000] &gt; 0) &#123;</span><br><span class="line">                    dp[i][sum + nums[i] + 1000] +&#x3D; dp[i - 1][sum + 1000];</span><br><span class="line">                    dp[i][sum - nums[i] + 1000] +&#x3D; dp[i - 1][sum + 1000];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return S &gt; 1000 ? 0 : dp[nums.length - 1][S + 1000];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><h3 id="1-1-79-零钱兑换"><a href="#1-1-79-零钱兑换" class="headerlink" title="1.1 79. 零钱兑换"></a>1.1 79. 零钱兑换</h3><p>给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: amount &#x3D; 5, coins &#x3D; [1, 2, 5]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 有四种方式可以凑成总金额:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;2+2+1</span><br><span class="line">5&#x3D;2+1+1+1</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>类似于77组合总和，dp[n] 表示和为n的组合总数。但是注意重复的只算一种</p>
+<h4 id="最优解-3"><a href="#最优解-3" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    @classmethod</span><br><span class="line">    def change(self, amount: int, coins: list) -&gt; int:</span><br><span class="line">        if amount &#x3D;&#x3D; 0:</span><br><span class="line">            return 0</span><br><span class="line">        dp &#x3D; [0] * (amount + 1)</span><br><span class="line">        dp[0] &#x3D; 1</span><br><span class="line"></span><br><span class="line">        for coin in coins:</span><br><span class="line">            for i in range(coin, amount + 1):</span><br><span class="line">                dp[i] +&#x3D; dp[i - coin]</span><br><span class="line">        return dp[amount]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-80-单词拆分"><a href="#1-2-80-单词拆分" class="headerlink" title="1.2 80. 单词拆分"></a>1.2 80. 单词拆分</h3><p>给定一个<strong>非空</strong>字符串 <em>s</em> 和一个包含<strong>非空</strong>单词的列表 <em>wordDict*，判定 *s</em> 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: s &#x3D; &quot;leetcode&quot;, wordDict &#x3D; [&quot;leet&quot;, &quot;code&quot;]</span><br><span class="line">输出: true</span><br><span class="line">解释: 返回 true 因为 &quot;leetcode&quot; 可以被拆分成 &quot;leet code&quot;。</span><br><span class="line"></span><br><span class="line">输入: s &#x3D; &quot;catsandog&quot;, wordDict &#x3D; [&quot;cats&quot;, &quot;dog&quot;, &quot;sand&quot;, &quot;and&quot;, &quot;cat&quot;]</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-3"><a href="#最优解思路-3" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>背包问题，动态规划。dp[i]表示s的前i位是否可以用wordDict中的单词表示。</p>
+<p>遍历字符串的所有子串，开始索引i，区间为[0,n),结束索引j，区间为[i+1,n+1)</p>
+<p>若dp[i] = True，且s[i,..j)在wordlist中：dp[j] = True。</p>
+<h4 id="最优解-4"><a href="#最优解-4" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def wordBreak(self, s: str, wordDict: List[str]) -&gt; bool:       </span><br><span class="line">        n&#x3D;len(s)</span><br><span class="line">        dp&#x3D;[False]*(n+1)</span><br><span class="line">        dp[0]&#x3D;True</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(i+1,n+1):</span><br><span class="line">                if(dp[i] and (s[i:j] in wordDict)):</span><br><span class="line">                    dp[j]&#x3D;True</span><br><span class="line">        return dp[-1]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" rel="tag"># 背包问题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/" rel="next" title="《redis深度历险》八(字符串和字典)">
+                <i class="fa fa-chevron-left"></i> 《redis深度历险》八(字符串和字典)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jimmy</p>
+              <p class="site-description motion-element" itemprop="description">描述展示</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-29-76-剪绳子"><span class="nav-number">1.</span> <span class="nav-text">12.29 76. 剪绳子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路"><span class="nav-number">1.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解"><span class="nav-number">1.2.</span> <span class="nav-text">最优解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解总结"><span class="nav-number">1.3.</span> <span class="nav-text">最优解总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-30-77-组合总和"><span class="nav-number">2.</span> <span class="nav-text">12.30 77. 组合总和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-1"><span class="nav-number">2.2.</span> <span class="nav-text">最优解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解总结-1"><span class="nav-number">2.3.</span> <span class="nav-text">最优解总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-31-78-目标和"><span class="nav-number">3.</span> <span class="nav-text">12.31 78. 目标和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-2"><span class="nav-number">3.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-2"><span class="nav-number">3.2.</span> <span class="nav-text">最优解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021"><span class="nav-number"></span> <span class="nav-text">2021</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-79-零钱兑换"><span class="nav-number">1.</span> <span class="nav-text">1.1 79. 零钱兑换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-3"><span class="nav-number">1.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-80-单词拆分"><span class="nav-number">2.</span> <span class="nav-text">1.2 80. 单词拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-3"><span class="nav-number">2.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-4"><span class="nav-number">2.2.</span> <span class="nav-text">最优解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jimmy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'daSKP8m2eaHvK3Y5UYwgAPvO-gzGzoHsz',
+        appKey: 'B8VJzj6BLpuQVjehnHsyPMOo',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
