@@ -262,6 +262,400 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/17/%E7%AC%AC17%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/17/%E7%AC%AC17%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="url">第17周LeetCode记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-17T23:30:04+08:00">
+                2021-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/17/%E7%AC%AC17%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/17/%E7%AC%AC17%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-3-81-分割等和子集"><a href="#1-3-81-分割等和子集" class="headerlink" title="1.3 81. 分割等和子集"></a>1.3 81. 分割等和子集</h3><p>给定一个<strong>只包含正整数</strong>的<strong>非空</strong>数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1, 5, 11, 5]</span><br><span class="line"></span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">解释: 数组可以分割成 [1, 5, 5] 和 [11].</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>和除以2，判断数组中元素和是否可以组成。</p>
+<h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><p>状态定义：<code>dp[i][j]</code>表示从数组的 <code>[0, i]</code> 这个子区间内挑选一些正整数，每个数只能用一次，使得这些数的和<strong>恰好等于</strong> <code>j</code>。</p>
+<p>状态转移方程：<img src="https://img2020.cnblogs.com/blog/1496566/202101/1496566-20210117153523731-126782306.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line"></span><br><span class="line">    public boolean canPartition(int[] nums) &#123;</span><br><span class="line">        int len &#x3D; nums.length;</span><br><span class="line">        &#x2F;&#x2F; 题目已经说非空数组，可以不做非空判断</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            sum +&#x3D; num;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 特判：如果是奇数，就不符合要求</span><br><span class="line">        if ((sum &amp; 1) &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int target &#x3D; sum &#x2F; 2;</span><br><span class="line">        &#x2F;&#x2F; 创建二维状态数组，行：物品索引，列：容量（包括 0）</span><br><span class="line">        boolean[][] dp &#x3D; new boolean[len][target + 1];</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 先填表格第 0 行，第 1 个数只能让容积为它自己的背包恰好装满</span><br><span class="line">        if (nums[0] &lt;&#x3D; target) &#123;</span><br><span class="line">            dp[0][nums[0]] &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 再填表格后面几行</span><br><span class="line">        for (int i &#x3D; 1; i &lt; len; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt;&#x3D; target; j++) &#123;</span><br><span class="line">                &#x2F;&#x2F; 直接从上一行先把结果抄下来，然后再修正</span><br><span class="line">                dp[i][j] &#x3D; dp[i - 1][j];</span><br><span class="line"></span><br><span class="line">                if (nums[i] &#x3D;&#x3D; j) &#123;</span><br><span class="line">                    dp[i][j] &#x3D; true;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                if (nums[i] &lt; j) &#123;</span><br><span class="line">                    dp[i][j] &#x3D; dp[i - 1][j] || dp[i - 1][j - nums[i]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[len - 1][target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在「填表格」的时候，当前行只参考了上一行的值，因此状态数组可以只设置 22 行，使用「滚动数组」的技巧「填表格」即可；</p>
+<p>实际上，在「滚动数组」的基础上还可以优化，在「填表格」的时候，当前行总是参考了它上面一行 「头顶上」 那个位置和「左上角」某个位置的值。因此，我们可以只开一个一维数组，从后向前依次填表即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line"></span><br><span class="line">    public boolean canPartition(int[] nums) &#123;</span><br><span class="line">        int len &#x3D; nums.length;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        for (int num : nums) &#123;</span><br><span class="line">            sum +&#x3D; num;</span><br><span class="line">        &#125;</span><br><span class="line">        if ((sum &amp; 1) &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int target &#x3D; sum &#x2F; 2;</span><br><span class="line">        boolean[] dp &#x3D; new boolean[target + 1];</span><br><span class="line">        dp[0] &#x3D; true;</span><br><span class="line"></span><br><span class="line">        if (nums[0] &lt;&#x3D; target) &#123;</span><br><span class="line">            dp[nums[0]] &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 从第一行</span><br><span class="line">        for (int i &#x3D; 1; i &lt; len; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 倒着画表</span><br><span class="line">            for (int j &#x3D; target; nums[i] &lt;&#x3D; j; j--) &#123;</span><br><span class="line">                if (dp[target]) &#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[j] &#x3D; dp[j] || dp[j - nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解总结"><a href="#最优解总结" class="headerlink" title="最优解总结"></a>最优解总结</h4><p>二维数组转为一维数组，利用了剪枝，相同的判断可以优化。此类背包问题要先画表，0-1背包问题（非对即错）</p>
+<p>包的数量是元素和/2</p>
+<h3 id="1-4-82-一和零"><a href="#1-4-82-一和零" class="headerlink" title="1.4 82. 一和零"></a>1.4 82. 一和零</h3><p>给你一个二进制字符串数组 strs 和两个整数 m 和 n 。</p>
+<p>请你找出并返回 strs 的最大子集的大小，该子集中 最多 有 m 个 0 和 n 个 1 。</p>
+<p>如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：strs &#x3D; [&quot;10&quot;, &quot;0001&quot;, &quot;111001&quot;, &quot;1&quot;, &quot;0&quot;], m &#x3D; 5, n &#x3D; 3</span><br><span class="line">输出：4</span><br><span class="line">解释：最多有 5 个 0 和 3 个 1 的最大子集是 &#123;&quot;10&quot;,&quot;0001&quot;,&quot;1&quot;,&quot;0&quot;&#125; ，因此答案是 4 。</span><br><span class="line">其他满足题意但较小的子集包括 &#123;&quot;0001&quot;,&quot;1&quot;&#125; 和 &#123;&quot;10&quot;,&quot;1&quot;,&quot;0&quot;&#125; 。&#123;&quot;111001&quot;&#125; 不满足题意，因为它含 4 个 1 ，大于 n 的值 3 。</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路"><a href="#最优解思路" class="headerlink" title="最优解思路"></a>最优解思路</h4><p><a href="https://leetcode-cn.com/problems/ones-and-zeroes/solution/pythonjie-jue-zhi-duo-wei-bei-bao-by-admin_user/" target="_blank" rel="noopener">0-1背包</a>，dp[i][j]表示i个0，j个1所能拼成的最大子集的容量。画表可以推导出来。</p>
+<p>画表方法，判断是否可以容纳，选定哪些背包有容量可以放。可以放的包可以调用状态转移方程。</p>
+<h4 id="最优解-1"><a href="#最优解-1" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findMaxForm(self, strs: List[str], m: int, n: int) -&gt; int:</span><br><span class="line">        if len(strs) &#x3D;&#x3D; 0:</span><br><span class="line">            return 0</span><br><span class="line">        </span><br><span class="line">        dp &#x3D; [[0]*(n+1) for _ in range(m+1)]   #准备很多个背包</span><br><span class="line">        </span><br><span class="line">        for strs_item in strs:</span><br><span class="line">            item_count0 &#x3D; strs_item.count(&#39;0&#39;)</span><br><span class="line">            item_count1 &#x3D; strs_item.count(&#39;1&#39;)</span><br><span class="line">            </span><br><span class="line">            #遍历可容纳的背包 </span><br><span class="line">            for i in range(m, item_count0 - 1, -1):  #采取倒序</span><br><span class="line">                for j in range(n, item_count1 - 1, -1):</span><br><span class="line">                    dp[i][j] &#x3D; max(dp[i][j], 1 + dp[i-item_count0][j-item_count1])</span><br><span class="line">                    </span><br><span class="line">        return dp[m][n]</span><br></pre></td></tr></table></figure>
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>背包问题的特征有了新的认识，即每个背包都是一种可能，每个背包都有状态转移方程。</p>
+<h3 id="1-5-83-零钱兑换"><a href="#1-5-83-零钱兑换" class="headerlink" title="1.5 83. 零钱兑换"></a>1.5 83. 零钱兑换</h3><p>给定不同面额的硬币 <code>coins</code> 和一个总金额 <code>amount</code>。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code>。</p>
+<p>你可以认为每种硬币的数量是无限的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：coins &#x3D; [1, 2, 5], amount &#x3D; 11</span><br><span class="line">输出：3 </span><br><span class="line">解释：11 &#x3D; 5 + 5 + 1</span><br><span class="line"></span><br><span class="line">输入：coins &#x3D; [2], amount &#x3D; 3</span><br><span class="line">输出：-1</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-1"><a href="#最优解思路-1" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>动态规划</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: coins &#x3D; [1, 2, 5], amount &#x3D; 11</span><br><span class="line">凑成面值为 11 的最少硬币个数可以由以下三者的最小值得到：</span><br><span class="line"></span><br><span class="line">凑成面值为 10 的最少硬币个数 + 面值为 1 的这一枚硬币；</span><br><span class="line">凑成面值为 9 的最少硬币个数 + 面值为 2 的这一枚硬币；</span><br><span class="line">凑成面值为 6 的最少硬币个数 + 面值为 5 的这一枚硬币。</span><br><span class="line">即 dp[11] &#x3D; min (dp[10] + 1, dp[9] + 1, dp[6] + 1)。</span><br><span class="line"></span><br><span class="line">dp[amount] &#x3D; min(dp[amount], 1 + dp[amount - coins[i]]) for i in [0, len - 1] if coins[i] &lt;&#x3D; amount</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解-2"><a href="#最优解-2" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public int coinChange(int[] coins, int amount) &#123;</span><br><span class="line">    &#x2F;&#x2F; 给 0 占位</span><br><span class="line">    int[] dp &#x3D; new int[amount + 1];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 注意：因为要比较的是最小值，这个不可能的值就得赋值成为一个最大值</span><br><span class="line">    Arrays.fill(dp, amount + 1);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 理解 dp[0] &#x3D; 0 的合理性，单独一枚硬币如果能够凑出面值，符合最优子结构</span><br><span class="line">    dp[0] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; amount; i++) &#123;</span><br><span class="line">        for (int coin : coins) &#123;</span><br><span class="line">            if (i - coin &gt;&#x3D; 0 &amp;&amp; dp[i - coin] !&#x3D; amount + 1) &#123;</span><br><span class="line">                dp[i] &#x3D; Math.min(dp[i], 1 + dp[i - coin]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (dp[amount] &#x3D;&#x3D; amount + 1) &#123;</span><br><span class="line">        dp[amount] &#x3D; -1;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[amount];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-9-84-两数相除"><a href="#1-9-84-两数相除" class="headerlink" title="1.9 84. 两数相除"></a>1.9 84. 两数相除</h3><p>给定两个整数，被除数 dividend 和除数 divisor。将两数相除，要求不使用乘法、除法和 mod 运算符。</p>
+<p>返回被除数 dividend 除以除数 divisor 得到的商。</p>
+<p>整数除法的结果应当截去（truncate）其小数部分，例如：truncate(8.345) = 8 以及 truncate(-2.7335) = -2</p>
+<h4 id="最优解-3"><a href="#最优解-3" class="headerlink" title="最优解"></a>最优解</h4><p>利用位运算求解</p>
+<p>位移操作可以模拟乘法：</p>
+<p>如：7 * 13 = 7 * (8 + 4 + 1) = 7 * 8 + 7 * 4 + 7 * 1</p>
+<p>其中8,4,1分别是2的3,2,0次幂，因此</p>
+<p>7 * 13 = 7 &lt;&lt; 3 + 7 &lt;&lt; 2 + 7 &lt;&lt; 0 , 对于本题来说，即是：</p>
+<p>a * x = b (暂不考虑余数)时，求x。根据上面位移运算模拟乘法的逻辑，可以把x看做一个由2的整数次幂的指数部分组成的一个数组。<br>如7 * 13，则13大约可以看成是[3,2,0]。因此本题可以转化为求此数组，之后累加2的数组元素次幂即可。</p>
+<p>例子： 3 * x = 10</p>
+<p>3 &lt;&lt; 1 = 6 且 3 &lt;&lt; 2 = 12<br>因12已经超过10的范围了，故y1 = 1。</p>
+<p>然后，求 3 * x = (10 - (3 &lt;&lt; 1)) 即3 * x = 4</p>
+<p>可得y2 = 0，因为3 &lt;&lt; 1 = 6,已经超过4了。</p>
+<p>之后4 - (3 &lt;&lt; 0) = 4 - 3 = 1。由于1已经小于3，不需要再继续找y3了。</p>
+<p>故最终得出的y相关的数组为[1,0],则 x = 2^1 + 2^0 = 2 + 1 = 3（注：2^1 = 1&lt;&lt;1, 而在不溢出的情况下2 ^ n = 1 &lt;&lt; n，后面不再赘述）。</p>
+<h4 id="最优解-4"><a href="#最优解-4" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">var divide &#x3D; function (dividend, divisor) &#123;</span><br><span class="line">    var INT_MAX &#x3D; 0x7FFFFFFF;</span><br><span class="line">    var INT_MIN &#x3D; 1 &lt;&lt; 31;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;先判断符号</span><br><span class="line">    var symbol &#x3D; (dividend ^ divisor) &gt;&gt; 31;</span><br><span class="line">    &#x2F;&#x2F;由于Math.abs(INT_MIN)存在溢出问题</span><br><span class="line">    &#x2F;&#x2F;因此被除数与除数全部转为负数处理</span><br><span class="line">    var _dividend &#x3D; dividend &gt; 0 ? -dividend : dividend;</span><br><span class="line">    var _divisor &#x3D; divisor &gt; 0 ? -divisor : divisor;</span><br><span class="line"></span><br><span class="line">    var times &#x3D; divided_negtive(_dividend, _divisor);</span><br><span class="line"></span><br><span class="line">    var output &#x3D; 0;</span><br><span class="line">    for (var i &#x3D; 0; i &lt; times.length; i++) &#123;</span><br><span class="line">        if (times[i] &#x3D;&#x3D;&#x3D; 31) &#123;</span><br><span class="line">            &#x2F;&#x2F;i&#x3D;31表示INT_MIN，times无第二个元素，直接短路处理</span><br><span class="line">            if (symbol &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">                &#x2F;&#x2F;符号为正，此时存在INT_MIN转为正数溢出,返回INT_MAX</span><br><span class="line">                return INT_MAX;</span><br><span class="line">            &#125;</span><br><span class="line">            return INT_MIN;</span><br><span class="line">        &#125;</span><br><span class="line">        output +&#x3D; (1 &lt;&lt; times[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return symbol ? -output : output;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function divided_negtive(dividend, divisor) &#123;</span><br><span class="line">    &#x2F;&#x2F;两负数相除</span><br><span class="line">    &#x2F;&#x2F;如-10&#x2F;-20当除数小于被除数时，商为0</span><br><span class="line">    if (divisor &lt; dividend) &#123;</span><br><span class="line">        return [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var timesMax &#x3D; 32;</span><br><span class="line">    var timesMin &#x3D; 0;</span><br><span class="line">    while (timesMax !&#x3D;&#x3D; timesMin + 1) &#123;</span><br><span class="line">        &#x2F;&#x2F;二分查找</span><br><span class="line">        var mid &#x3D; (timesMax + timesMin) &gt;&gt; 1;</span><br><span class="line">        &#x2F;&#x2F;divisor&lt;&lt;mid后有可能超过-1&lt;&lt;31的范围</span><br><span class="line">        &#x2F;&#x2F;因此要判断divisor是否大于等于-1&lt;&lt;(31-mid)，一旦小于这个值，则必定溢出</span><br><span class="line">        if (divisor &lt; (-1 &lt;&lt; (31 - mid))) &#123;</span><br><span class="line">            &#x2F;&#x2F;符合溢出条件，说明mid过大，将mid赋给timesMax，供下次折半查找使用</span><br><span class="line">            timesMax &#x3D; mid;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var testVal &#x3D; divisor &lt;&lt; mid;</span><br><span class="line">        if (testVal &lt; dividend) &#123;</span><br><span class="line">            timesMax &#x3D; mid;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            timesMin &#x3D; mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return [timesMin].concat(divided_negtive(dividend - (divisor &lt;&lt; timesMin), divisor));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>用二分法最快确定位移的位数</li>
+<li>异或右移31位取符号</li>
+</ul>
+<h3 id="1-12-85-存在重复元素"><a href="#1-12-85-存在重复元素" class="headerlink" title="1.12 85. 存在重复元素"></a>1.12 85. 存在重复元素</h3><p>在整数数组 nums 中，是否存在两个下标 i 和 j，使得 nums [i] 和 nums [j] 的差的绝对值小于等于 t ，且满足 i 和 j 的差的绝对值也小于等于 ķ 。</p>
+<p>如果存在则返回 true，不存在返回 false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: nums &#x3D; [1,2,3,1], k &#x3D; 3, t &#x3D; 0</span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">输入: nums &#x3D; [1,0,1,1], k &#x3D; 1, t &#x3D; 2</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="我的解"><a href="#我的解" class="headerlink" title="我的解"></a>我的解</h4><p>滑动窗口的大小知道，从前到后遍历。</p>
+<h4 id="最优解-5"><a href="#最优解-5" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123;</span><br><span class="line">    TreeSet&lt;Integer&gt; set &#x3D; new TreeSet&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; nums.length; ++i) &#123;</span><br><span class="line">        &#x2F;&#x2F; Find the successor of current element</span><br><span class="line">        Integer s &#x3D; set.ceiling(nums[i]);</span><br><span class="line">        if (s !&#x3D; null &amp;&amp; s &lt;&#x3D; nums[i] + t) return true;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Find the predecessor of current element</span><br><span class="line">        Integer g &#x3D; set.floor(nums[i]);</span><br><span class="line">        if (g !&#x3D; null &amp;&amp; nums[i] &lt;&#x3D; g + t) return true;</span><br><span class="line"></span><br><span class="line">        set.add(nums[i]);</span><br><span class="line">        if (set.size() &gt; k) &#123;</span><br><span class="line">            set.remove(nums[i - k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解总结-1"><a href="#最优解总结-1" class="headerlink" title="最优解总结"></a>最优解总结</h4><p>用set的大小保证了滑动窗口的大小，set.ceiling cet.floor可以获取前继节点和后继节点。java中的treeSet 二叉排序树（BST）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/" itemprop="url">《redis深度历险》十-LRU FU</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-17T23:25:36+08:00">
+                2021-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="LFU-VS-LRU"><a href="#LFU-VS-LRU" class="headerlink" title="LFU VS LRU"></a>LFU VS LRU</h3><p>LFU：least frequntly used，按最近的访问频率淘汰，比LRU更加精准的表示了一个key的被访问热度。</p>
+<h4 id="redis对象的热度"><a href="#redis对象的热度" class="headerlink" title="redis对象的热度"></a>redis对象的热度</h4><p>redis的所有对象头结构中都有一个24bit的字段，用来记录对象的热度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct redisObject &#123;</span><br><span class="line">	unsigned type:4; &#x2F;&#x2F; 对象类型如 zset,set,hash等</span><br><span class="line">	unsigned encoding:4 &#x2F;&#x2F; 对象编码如ziplist,intset,skiplist等</span><br><span class="line">	unsigned lru:24; &#x2F;&#x2F; 对象的热度</span><br><span class="line">	int refcount; &#x2F;&#x2F; 引用计数</span><br><span class="line">	void *ptr &#x2F;&#x2F; 对象的body</span><br><span class="line">&#125;robj</span><br></pre></td></tr></table></figure>
+
+<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>Least Recently Used</p>
+<p>在 LRU 模式下， lru 字段存储的是 Redis 时钟 server.lruclocko Redis 时钟是一个24bit 的整数，默认是 Unix 时间戳对 2^24 取模的结果，大约 97 天清零一次 。<strong>当某个 key被访问一次，它的对象头结构的 lru字段值就会被更新为 server.lruclock。</strong>  </p>
+<p>如果 server.lruclock 没有折返(对 2^24 取模〉，它就是一直递增的，这意昧着对 象的 lru字段不会超过 server.lruclock的值。下方左图</p>
+<p>如果超过了，说明 server.lruclock折返了。 通过这个逻辑就可以精准计算出对象多长时间没有被访问一一即“对象的空闲时间”。（ 下方右图有些问题，lru不可能超过max的，小于等于max）</p>
+<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201126000223733-844872872.png" alt=""></p>
+<h4 id="LFU"><a href="#LFU" class="headerlink" title="LFU"></a>LFU</h4><p>在LFU模式下，lru字段用来存储两个值，分别是ldt(last decrement time)16bit和logc(logistic counter)8bit</p>
+<p>loge 是 8 个 bit，<strong>用来存储访问频次</strong>，因为 8 个 bit 能表示的最大整数值为 255，存储频次肯定远远不够，所以这 8 个 bit 存储的是频次的对数值，并且这个 值还会随时间衰减，如果它的值比较小，那么就很容易被回收。为了确保新创建的 对象不被回收，新对象的这 8 个 bit 会被初始化为一个大于零的值 LFU_INIT_VAL(默认是=5) 。</p>
+<p>ldt 是 16 个 bit，<strong>用来存储上一次 loge 的更新时间</strong>。因为只有 16 个 bit，所以 精度不可能很高。它取的是分钟时间戳对 i6 进行取模，大约每隔 45 天就会折返。 下呈现了折返前后空闲时间的不同计算规则。同 LRU 模式一样，我们也可以 使用这个逻辑计算出对象的空闲时间，只不过精度是分钟级别的。图中的 server.unixtime 是当前 Redis 记录的系统时间戳，和 server.lruclock 一样，它也是每毫秒 更新一次。  </p>
+<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201126002341230-606280578.png" alt=""></p>
+<p>ldt不是在对象被访问时更新的，而是在redis的淘汰逻辑进行时更新的，每次淘汰都是采用随机策略， 随机挑选若干个 key，更新这个 key 的“热度”，淘汰掉“热度”最低的 key。因为 Redis 采用的是随机算法，如果 key 比较多的话，那么 ldt 更新得可能会比较慢。不 过既然它是分钟级别的精度，也没有必要更新得过于频繁。 </p>
+<p>ldt 更新的同时也会一同衰减 loge 的值。衰减也有特定的算法。</p>
+<p>总而言之，就是通过logc和ldt相互结合，可以获得某个键的使用频率。</p>
+<h4 id="缓存时间戳"><a href="#缓存时间戳" class="headerlink" title="缓存时间戳"></a>缓存时间戳</h4><p>redis每一次获取系统时 间戳都是一次系统调用， 系统调用相对来说是比较费时间的，作为单线程的Redis承 受不起，所以它需要对时间进行缓存，获取时间都是从缓存中直接拿。 </p>
+<h3 id="惰性删除"><a href="#惰性删除" class="headerlink" title="惰性删除"></a>惰性删除</h3><h4 id="共享机制"><a href="#共享机制" class="headerlink" title="共享机制"></a>共享机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd heat wade bosh james</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; sadd cavs irving love james</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; sunionstore players heat cavs</span><br><span class="line">(integer) 5</span><br><span class="line">127.0.0.1:6379&gt; smembers players</span><br><span class="line">1) &quot;wade&quot;</span><br><span class="line">2) &quot;bosh&quot;</span><br><span class="line">3) &quot;james&quot;</span><br><span class="line">4) &quot;love&quot;</span><br><span class="line">5) &quot;irving&quot;</span><br></pre></td></tr></table></figure>
+
+<p>新的集合包含了旧集合的所有元素，里面有一个trick，底层的字符串对象被共享了。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201127003226927-1021003802.png" alt=""></p>
+<p>为什么对象共享是懒惰删除的最大障碍呢，因为懒惰删除相当于彻底砍掉某个树枝，将它扔到异步删除队列里去，这里是彻底删除，如果底层的对象是被共享的，就不是彻底删除，下图就不是彻底删除。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1496566/202101/1496566-20210117232817612-896419831.png" alt=""></p>
+<p>为了支持懒惰删除，就必须实现无共享设计。</p>
+<h4 id="异步删除的实现"><a href="#异步删除的实现" class="headerlink" title="异步删除的实现"></a>异步删除的实现</h4><p>主线程将删除任务传递给异步线程，他是通过一个普通的双向链表实现的，因为链表需要支持多线程并发操作，所以需要有锁来保护。</p>
+<p>执行懒惰删除时， Redis 将删除操作的相关参数封装成一个 bio_job 结构，然后 追加到链表尾部。异步线程通过遍历链表摘取 job 元素来挨个执行异步任务 。 </p>
+<h4 id="队列安全"><a href="#队列安全" class="headerlink" title="队列安全"></a>队列安全</h4><p>前面提到任务队列是个不安全的双向链表 ， 需要使用锁来保护它。当主线程 将任务追加到队列之前需要给它加锁，追加完毕后，再释放锁，还需要唤醒异步线 程一一 如果其在休眠的话。 </p>
+<p>异步线程需要对任务队列进行轮询处理，依次从链表表头摘取元素逐个处理 。 摘取元素的时候也需要加锁，摘出来之后再解锁。如果一个元素都没有，它需要等待， 直到主线程来唤醒它继续工作。 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/10/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E4%B9%9D-%E5%88%97%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1248,7 +1642,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1270,7 +1664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
