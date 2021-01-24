@@ -262,6 +262,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/24/%E7%AC%AC18%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/24/%E7%AC%AC18%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="url">第18周LeetCode记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-24T22:30:33+08:00">
+                2021-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/24/%E7%AC%AC18%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/24/%E7%AC%AC18%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-14-86-交换一次的先前排列"><a href="#1-14-86-交换一次的先前排列" class="headerlink" title="1.14 86. 交换一次的先前排列"></a>1.14 86. 交换一次的先前排列</h3><p>给你一个正整数的数组 <code>A</code>（其中的元素不一定完全不同），请你返回可在 <strong>一次交换</strong>（交换两数字 <code>A[i]</code> 和 <code>A[j]</code> 的位置）后得到的、按字典序排列小于 <code>A</code> 的最大可能排列。</p>
+<p>如果无法这么操作，就请返回原数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：arr &#x3D; [3,2,1]</span><br><span class="line">输出：[3,1,2]</span><br><span class="line">解释：交换 2 和 1</span><br><span class="line"></span><br><span class="line">输入：arr &#x3D; [1,1,5]</span><br><span class="line">输出：[1,1,5]</span><br><span class="line">解释：已经是最小排列</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路"><a href="#最优解思路" class="headerlink" title="最优解思路"></a>最优解思路</h4><ol>
+<li>升序排列的数组无需交换</li>
+<li>逆序查找，第一次升序的位置即是交换的位置。</li>
+<li><img src="https://pic.leetcode-cn.com/67a9d6dc9b41bb262d480bc129bc6679adb0cdc7e0b634e99e474e1da124bd53-image.png" alt="image.png"></li>
+<li>从箭头所在的位置开始，查找当前位置和右侧所有元素，且这个元素A[j]要满足以下条件：<ul>
+<li>这个元素值最大且小于要交换的元素的值A[i-1]</li>
+<li>这个元素最靠近要交换的元素A[i-1]（主要是考虑右侧元素相等的情况，如3113，交换左侧1以保证元素组成的数据最大）</li>
+</ul>
+</li>
+</ol>
+<h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def prevPermOpt1(self, A: List[int]) -&gt; List[int]:</span><br><span class="line">        lenth &#x3D; len(A)</span><br><span class="line">        for i in range(lenth-1, 0, -1):</span><br><span class="line">            # 第一次升序的位置，左侧元素A[i-1]大于当前元素A[i]</span><br><span class="line">            if A[i-1] &gt; A[i]:</span><br><span class="line">                # 逆序从结尾向第i-1个索引查找A[j]           </span><br><span class="line">                for j in range(lenth-1, i-1, -1):</span><br><span class="line">                    # 元素要满足小于A[i-1]且与左侧元素不相等就是要找的最大元素</span><br><span class="line">                    if A[j] &lt; A[i-1] and A[j] !&#x3D; A[j-1]:</span><br><span class="line">                        A[i-1],A[j] &#x3D; A[j],A[i-1]</span><br><span class="line">                        return A</span><br><span class="line">        return A</span><br></pre></td></tr></table></figure>
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>交换后字典序最大要逆序查找，是比交换前字典序小的最大字典序。</p>
+<h3 id="1-17-87-最长快乐字符串"><a href="#1-17-87-最长快乐字符串" class="headerlink" title="1.17 87. 最长快乐字符串"></a>1.17 87. 最长快乐字符串</h3><p>如果字符串中不含有任何 <code>&#39;aaa&#39;</code>，<code>&#39;bbb&#39;</code> 或 <code>&#39;ccc&#39;</code> 这样的字符串作为子串，那么该字符串就是一个「快乐字符串」。</p>
+<p>给你三个整数 <code>a</code>，<code>b</code> ，<code>c</code>，请你返回 <strong>任意一个</strong> 满足下列全部条件的字符串 <code>s</code></p>
+<ul>
+<li><code>s</code> 是一个尽可能长的快乐字符串。</li>
+<li><code>s</code> 中 <strong>最多</strong> 有<code>a</code> 个字母 <code>&#39;a&#39;</code>、<code>b</code> 个字母 <code>&#39;b&#39;</code>、<code>c</code> 个字母 <code>&#39;c&#39;</code> 。</li>
+<li><code>s</code>中只含有 <code>&#39;a&#39;</code>、<code>&#39;b&#39;</code> 、<code>&#39;c&#39;</code> 三种字母。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：a &#x3D; 1, b &#x3D; 1, c &#x3D; 7</span><br><span class="line">输出：&quot;ccaccbcc&quot;</span><br><span class="line">解释：&quot;ccbccacc&quot; 也是一种正确答案。</span><br><span class="line"></span><br><span class="line">输入：a &#x3D; 7, b &#x3D; 1, c &#x3D; 0</span><br><span class="line">输出：&quot;aabaa&quot;</span><br><span class="line">解释：这是该测试用例的唯一正确答案。</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-1"><a href="#最优解思路-1" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>每轮放置字符时优先先放剩余次数最多的, 如果上次放的2个字符和剩余个数最多的字符相同，则放置次多的字符，<strong>贪心算法</strong></p>
+<h4 id="最优解-1"><a href="#最优解-1" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestDiverseString</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        MyChar[] myChars = <span class="keyword">new</span> MyChar[]&#123;</span><br><span class="line">                <span class="keyword">new</span> MyChar(<span class="string">'a'</span>, a),</span><br><span class="line">                <span class="keyword">new</span> MyChar(<span class="string">'b'</span>, b),</span><br><span class="line">                <span class="keyword">new</span> MyChar(<span class="string">'c'</span>, c),</span><br><span class="line">        &#125;;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            Arrays.sort(myChars);</span><br><span class="line">            <span class="comment">//先放最多的, 如果上个放的2个字符串和剩余个数最多的字符相同，则放置次多的字符</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sb.length() &gt;= <span class="number">2</span> &amp;&amp;</span><br><span class="line">                    sb.charAt(sb.length() - <span class="number">1</span>) == myChars[<span class="number">2</span>].ch &amp;&amp;</span><br><span class="line">                    sb.charAt(sb.length() - <span class="number">2</span>) == myChars[<span class="number">2</span>].ch) &#123;</span><br><span class="line">                <span class="keyword">if</span> (myChars[<span class="number">1</span>].count-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    sb.append(myChars[<span class="number">1</span>].ch);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (myChars[<span class="number">2</span>].count-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    sb.append(myChars[<span class="number">2</span>].ch);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyChar</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="keyword">int</span> count;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyChar</span><span class="params">(<span class="keyword">char</span> ch, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.ch = ch;</span><br><span class="line">            <span class="keyword">this</span>.count = count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            MyChar other = (MyChar)o;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.count - other.count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-19-88-到最近的人的最大距离"><a href="#1-19-88-到最近的人的最大距离" class="headerlink" title="1.19 88. 到最近的人的最大距离"></a>1.19 88. 到最近的人的最大距离</h3><p>给你一个数组 seats 表示一排座位，其中 seats[i] = 1 代表有人坐在第 i 个座位上，seats[i] = 0 代表座位 i 上是空的（下标从 0 开始）。</p>
+<p>至少有一个空座位，且至少有一人已经坐在座位上。</p>
+<p>亚历克斯希望坐在一个能够使他与离他最近的人之间的距离达到最大化的座位上。</p>
+<p>返回他到离他最近的人的最大距离。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入：seats &#x3D; [1,0,0,0,1,0,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：</span><br><span class="line">如果亚历克斯坐在第二个空位（seats[2]）上，他到离他最近的人的距离为 2 。</span><br><span class="line">如果亚历克斯坐在其它任何一个空位上，他到离他最近的人的距离为 1 。</span><br><span class="line">因此，他到离他最近的人的最大距离是 2 。</span><br><span class="line"></span><br><span class="line">输入：seats &#x3D; [1,0,0,0]</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">如果亚历克斯坐在最后一个座位上，他离最近的人有 3 个座位远。</span><br><span class="line">这是可能的最大距离，所以答案是 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-2"><a href="#最优解思路-2" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>双指针，遍历所有座位 <code>seats</code>，找出每个空位左边最近的人和右边最近的人，更新当前空位到最近的人的距离。</p>
+<p>使用 prev 记录 i 最左边第一个有人的位置，future 记录 i 最右边第一个有人的位置。</p>
+<p>座位 i 到最近的人的距离为 min(i - prev, future - i)。另外有一种特殊情况，如果座位 i 左边没有人，则认为到左边第一个人的距离是无限大，右边同理。</p>
+<h4 id="最优解-2"><a href="#最优解-2" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int maxDistToClosest(int[] seats) &#123;</span><br><span class="line">        int N &#x3D; seats.length;</span><br><span class="line">        int prev &#x3D; -1, future &#x3D; 0;</span><br><span class="line">        int ans &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt; N; ++i) &#123;</span><br><span class="line">            if (seats[i] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                prev &#x3D; i;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                while (future &lt; N &amp;&amp; seats[future] &#x3D;&#x3D; 0 || future &lt; i)</span><br><span class="line">                    future++;</span><br><span class="line"></span><br><span class="line">                int left &#x3D; prev &#x3D;&#x3D; -1 ? N : i - prev;</span><br><span class="line">                int right &#x3D; future &#x3D;&#x3D; N ? N : future - i;</span><br><span class="line">                ans &#x3D; Math.max(ans, Math.min(left, right));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-24-89-优势洗牌"><a href="#1-24-89-优势洗牌" class="headerlink" title="1.24 89. 优势洗牌"></a>1.24 89. 优势洗牌</h3><p>给定两个大小相等的数组 A 和 B，A 相对于 B 的优势可以用满足 A[i] &gt; B[i] 的索引 i 的数目来描述。</p>
+<p>返回 A 的任意排列，使其相对于 B 的优势最大化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A &#x3D; [2,7,11,15], B &#x3D; [1,10,4,11]</span><br><span class="line">输出：[2,11,7,15]</span><br><span class="line"></span><br><span class="line">输入：A &#x3D; [12,24,8,32], B &#x3D; [13,25,32,11]</span><br><span class="line">输出：[24,32,8,12]</span><br></pre></td></tr></table></figure>
+
+<h4 id="最优解思路-3"><a href="#最优解思路-3" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>田忌赛马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A &#x3D; [1,3,5]</span><br><span class="line">B &#x3D; [2,4,6]</span><br><span class="line">输出：[3, 5, 1]</span><br></pre></td></tr></table></figure>
+
+<p>如果 A 中最小的牌 a 能击败 B 中最小的牌 b，那么我们应当将它们配对。否则， a 将无益于我们的比分，因为它无法击败任何牌。</p>
+<p>我们为什么要在 a &gt; b 时将 a 和 b 配对呢？这是因为此时在 A 中的每张牌都比 b 要大，所以不管我们在 b 前面放置哪张牌都可以得分。我们可以用手中最弱的牌来与 b 配对，这样会使 A 中剩余的牌严格地变大，因此会有更多得分点。</p>
+<h4 id="最优解-3"><a href="#最优解-3" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def advantageCount(self, A, B):</span><br><span class="line">        sortedA &#x3D; sorted(A)</span><br><span class="line">        sortedB &#x3D; sorted(B)</span><br><span class="line"></span><br><span class="line">        # assigned[b] &#x3D; list of a that are assigned to beat b</span><br><span class="line">        # remaining &#x3D; list of a that are not assigned to any b</span><br><span class="line">        assigned &#x3D; &#123;b: [] for b in B&#125;</span><br><span class="line">        remaining &#x3D; []</span><br><span class="line"></span><br><span class="line">        # populate (assigned, remaining) appropriately</span><br><span class="line">        # sortedB[j] is always the smallest unassigned element in B</span><br><span class="line">        j &#x3D; 0</span><br><span class="line">        for a in sortedA:</span><br><span class="line">            if a &gt; sortedB[j]:</span><br><span class="line">                assigned[sortedB[j]].append(a)</span><br><span class="line">                j +&#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                remaining.append(a)</span><br><span class="line"></span><br><span class="line">        # Reconstruct the answer from annotations (assigned, remaining)</span><br><span class="line">        return [assigned[b].pop() if assigned[b] else remaining.pop()</span><br><span class="line">                for b in B]</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/17/%E7%AC%AC17%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1642,7 +1842,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1664,7 +1864,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
