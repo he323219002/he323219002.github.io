@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="贪心算法,二叉树,动态规划,LRU," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,22 +79,16 @@
 
 
 
-<meta name="description" content="12.22 71. 两地调度公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 123456789输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 3">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第15周LeetCode记录">
-<meta property="og:url" content="http://yoursite.com/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/index.html">
+<meta name="description" content="描述展示">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jimmy&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Jimmy&#39;s Blog">
-<meta property="og:description" content="12.22 71. 两地调度公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。 返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。 123456789输入：[[10,20],[30,200],[400,50],[30,20]]输出：110解释：第一个人去 A 市，费用为 10。第二个人去 A 市，费用为 3">
-<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/25/bst-tree.png">
-<meta property="article:published_time" content="2021-01-03T13:07:01.000Z">
-<meta property="article:modified_time" content="2021-07-04T08:22:00.590Z">
+<meta property="og:description" content="描述展示">
 <meta property="article:author" content="Jimmy">
-<meta property="article:tag" content="贪心算法">
-<meta property="article:tag" content="二叉树">
-<meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="LRU">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content=" NexT">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/25/bst-tree.png">
 
 
 
@@ -124,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/01/03/第15周LeetCode记录/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>第15周LeetCode记录 | Jimmy's Blog</title>
+  <title>Jimmy's Blog</title>
   
 
 
@@ -149,7 +143,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,9 +247,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -284,7 +279,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第15周LeetCode记录</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="url">第15周LeetCode记录</a></h1>
         
 
         <div class="post-meta">
@@ -366,7 +363,9 @@
       
 
       
-        <h3 id="12-22-71-两地调度"><a href="#12-22-71-两地调度" class="headerlink" title="12.22 71. 两地调度"></a>12.22 71. 两地调度</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
+        
+          
+            <h3 id="12-22-71-两地调度"><a href="#12-22-71-两地调度" class="headerlink" title="12.22 71. 两地调度"></a>12.22 71. 两地调度</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
 <p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：[[10,20],[30,200],[400,50],[30,20]]</span><br><span class="line">输出：110</span><br><span class="line">解释：</span><br><span class="line">第一个人去 A 市，费用为 10。</span><br><span class="line">第二个人去 A 市，费用为 30。</span><br><span class="line">第三个人去 B 市，费用为 50。</span><br><span class="line">第四个人去 B 市，费用为 20。</span><br><span class="line"></span><br><span class="line">最低总费用为 10 + 30 + 50 + 20 &#x3D; 110，每个城市都有一半的人在面试。</span><br></pre></td></tr></table></figure>
 
@@ -418,6 +417,8 @@
 <p>get操作，判断是否存在，不存在返回-1，存在把对应的链表索引换到头部。</p>
 <p>put操作，若存在和get操作类似，不存在则创建一个新的链表节点，放到头部再判断长度，超过规定长度就会从尾部去除。</p>
 
+          
+        
       
     </div>
     
@@ -432,46 +433,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag"># 贪心算法</a>
-          
-            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"># 二叉树</a>
-          
-            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
-          
-            <a href="/tags/LRU/" rel="tag"># LRU</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" rel="next" title="读书单">
-                <i class="fa fa-chevron-left"></i> 读书单
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/01/03/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%85%AB-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%AD%97%E5%85%B8/" rel="prev" title="《redis深度历险》八(字符串和字典)">
-                《redis深度历险》八(字符串和字典) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -481,11 +450,157 @@
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="url">读书单</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T01:38:07+08:00">
+                2021-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="2020已读"><a href="#2020已读" class="headerlink" title="2020已读"></a>2020已读</h3><ol>
+<li>java核心卷上册（2020.7）</li>
+<li>redis深度历险（2020.10）</li>
+<li>四个春天（2020.11）</li>
+<li>江城（2020.10）</li>
+</ol>
+<h3 id="2021计划读书10本"><a href="#2021计划读书10本" class="headerlink" title="2021计划读书10本"></a>2021计划读书10本</h3><ol>
+<li>日语初级上册</li>
+<li>日语初级下册</li>
+<li>人间失格</li>
+<li>活着</li>
+<li>金粉世家</li>
+<li>深入理解jvm</li>
+</ol>
+
+          
+        
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -493,13 +608,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -520,17 +628,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,22 +689,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-22-71-两地调度"><span class="nav-number">1.</span> <span class="nav-text">12.22 71. 两地调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路"><span class="nav-number">1.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解"><span class="nav-number">1.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-23-72-最长单词"><span class="nav-number">2.</span> <span class="nav-text">12.23 72. 最长单词</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">最优解思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-1"><span class="nav-number">2.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-26-73-二叉搜索树迭代器"><span class="nav-number">3.</span> <span class="nav-text">12.26 73. 二叉搜索树迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">3.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-2"><span class="nav-number">3.2.</span> <span class="nav-text">最优解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-26-74-买卖股票的最佳时机"><span class="nav-number">4.</span> <span class="nav-text">12.26 74. 买卖股票的最佳时机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解思路-2"><span class="nav-number">4.1.</span> <span class="nav-text">最优解思路</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解一：动态规划"><span class="nav-number">4.1.1.</span> <span class="nav-text">解一：动态规划</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解二：贪心算法"><span class="nav-number">4.1.2.</span> <span class="nav-text">解二：贪心算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-28-75-LRU缓存机制"><span class="nav-number">5.</span> <span class="nav-text">12.28 75. LRU缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">5.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解-3"><span class="nav-number">5.2.</span> <span class="nav-text">最优解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最优解总结"><span class="nav-number">5.3.</span> <span class="nav-text">最优解总结</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -746,10 +829,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

@@ -262,6 +262,547 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/26/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/26/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" itemprop="url">工厂模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-26T22:11:47+08:00">
+                2021-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/26/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/26/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>在父类中提供一个创建对象的方法，允许子类决定实例化对象的类型。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>假设一家汽车制造公司，一直在使用一套程序生产比亚迪型号的汽车，现在出现了大批量的特斯拉汽车的订单，如果在原来的程序上进行修改的话就会违反开闭原则，同时如果后期又多了其他品牌的订单，则再原程序上修改显得不现实。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>该公司分开出来两个制造工厂，BYDFactory和TeslaFactory，去分别制造该类型的汽车。公司接到订单后，只需要派给不同的公司即可。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><img src="https://img2020.cnblogs.com/blog/1496566/202107/1496566-20210717105201599-12619576.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象工厂类接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">produce</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象产品类接口</span></span><br><span class="line"><span class="comment">// public interface Car &#123;</span></span><br><span class="line">    <span class="function">String <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 特斯拉工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TeslaFactory</span> <span class="keyword">implements</span> <span class="title">CarFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">produce</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    		<span class="comment">// 只生产特斯拉</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> TeslaCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 比亚迪工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BYDFactory</span> <span class="keyword">implements</span> <span class="title">CarFactory</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">produce</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    		<span class="comment">// 只生产比亚迪</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BYDCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 比亚迪汽车</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BYDCar</span> <span class="keyword">implements</span> <span class="title">Car</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Build Your Dream"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 特斯拉汽车</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TeslaCar</span> <span class="keyword">implements</span> <span class="title">Car</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Go Electric"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 制造汽车</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 不关心创建过程，只关心调用者是谁</span></span><br><span class="line">        Car car = <span class="keyword">new</span> BYDFactory().produce();</span><br><span class="line">        String show = car.show();</span><br><span class="line">        System.out.println(show);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>需要有抽象工厂类和抽象产品类，工厂类生产各自的产品。</li>
+<li>遵循开闭原则，不会对原程序进行修改。</li>
+<li>单一功能指责，每个工厂的职责互不影响，比如特斯拉制造的四驱系统，比亚迪制造后驱系统。</li>
+<li>缺点就是可能随着品牌增多，导致具体工厂类和具体产品类数量变多。</li>
+</ol>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>能创建一系列相关对象，而不需要制定具体类。</p>
+<h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><p>电脑组装厂要组装联想和戴尔品牌的电脑，两种品牌的电脑采用的CPU、内存、硬盘都是不一样的厂家，如果不区分使用一套程序去制造非常困难，而且后期CPU换了型号，还要对应用程序大动手脚。</p>
+<h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><p>应当采用抽象工厂模式，抽象出一条整链的原材料，如果后期修改的话对于上一层调用的地方不用修改，只需要修改具体工厂的方法。比如联想将CPU换为AMD只需要修改联想厂家的方法。</p>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><p><img src="https://img2020.cnblogs.com/blog/1496566/202107/1496566-20210717113902422-1274285463.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">CPU <span class="title">createCpu</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Memory <span class="title">createMemory</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象产品</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CPU</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Memory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"默认内存"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体产品</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntelCpu</span> <span class="keyword">implements</span> <span class="title">CPU</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"intel CPU"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppleCpu</span> <span class="keyword">implements</span> <span class="title">CPU</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"apple cpu"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DellFactory</span> <span class="keyword">implements</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line">		<span class="comment">// apple cpu</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CPU <span class="title">createCpu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AppleCpu();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memory <span class="title">createMemory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memory() &#123;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LenovoFactory</span> <span class="keyword">implements</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line">		<span class="comment">// intel cpu</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CPU <span class="title">createCpu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IntelCpu();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Memory <span class="title">createMemory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Memory() &#123;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    		<span class="comment">// 抽象工厂可以生产不同具体类一系列产品</span></span><br><span class="line">        DellFactory factory = <span class="keyword">new</span> DellFactory();</span><br><span class="line">        factory.createCpu().work();</span><br><span class="line">        factory.createMemory().work();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>与普通工厂模式的区别就是每一个工厂不是创建单个对象，而是创建多个对象。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/26/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/26/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F/" itemprop="url">生成器模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-26T20:55:38+08:00">
+                2021-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/26/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/26/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>生成器模式是一种创建型设计模式，能够分布创建复杂对象。允许使用相同的创建代码生成不同类型和形式的对象。</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><h3 id="生成器接口（Builder）"><a href="#生成器接口（Builder）" class="headerlink" title="生成器接口（Builder）"></a>生成器接口（Builder）</h3><p>声明在所有类型生成器中通用的产品构造步骤。</p>
+<h3 id="具体生成器（Concrete-Builders）"><a href="#具体生成器（Concrete-Builders）" class="headerlink" title="具体生成器（Concrete Builders）"></a>具体生成器（Concrete Builders）</h3><p>提供构造过程的不同实现，具体生成器也可以构造不遵循通用接口的产品呢。</p>
+<h3 id="产品（Products）"><a href="#产品（Products）" class="headerlink" title="产品（Products）"></a>产品（Products）</h3><p>是最终生成的对象。由不同生成器构造的产品无需属于同一类层次结构或接口。</p>
+<h3 id="主管（Director）"><a href="#主管（Director）" class="headerlink" title="主管（Director）"></a>主管（Director）</h3><p>定义调用构造步骤的顺序，这样就可以创建和复用特定的产品配置。</p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>必须将某个生成器对象和主管类关联，只需通过主管类构造函数的参数进行一次性关联即可，伺候主管类就能使用生成器对象完成所有构造任务。</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>现在一个装修公司要建一套房子，但是每套房子的配置不一样，有的是独卫，有的是双卫。有的要求先做水电工步骤，有的要求先做泥木工步骤。这种场景如果我们把建房子当作一个对象，要求当作构造参数的话，参数一旦变多，代码的可读性就会下降，而且要求整改的时候会修改到业务代码违反了开闭原则。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>![image-20210726213347397](/Users/hjj/Library/Application Support/typora-user-images/image-20210726213347397.png)</p>
+<p>对于每一种房子都任命一个对它施工流程非常熟悉的项目经理（Dierctor），你只要给他提要求（Builder），他自己会按照规定去指定编排一套施工流程完成并交付给你。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成器接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buildStepA</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buildStepB</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buildStepC</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体生成器</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilderA</span> <span class="keyword">implements</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Villa result;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"做独卫"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"泥木工程用粗砂"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"水电工程开关用松下"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Villa <span class="title">getResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilderB</span> <span class="keyword">implements</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Department result;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"做双卫"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"泥木工程用细沙"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildStepC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"水电工程开关用西门子"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Department <span class="title">getResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体产品</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Villa</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Villa</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是别墅"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Department</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Department</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是公寓"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主管</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Builder builder;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(Builder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder = builder;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据不同的要求规划不同的流程</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">make</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (type.equals(<span class="string">"别墅"</span>))&#123;</span><br><span class="line">            builder.buildStepA();</span><br><span class="line">            builder.buildStepC();</span><br><span class="line">            builder.buildStepB();</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(type.equals(<span class="string">"公寓"</span>))&#123;</span><br><span class="line">            builder.buildStepC();</span><br><span class="line">            builder.buildStepA();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 业主提供了B建筑方式</span></span><br><span class="line">        ConcreteBuilderB builderB = <span class="keyword">new</span> ConcreteBuilderB();</span><br><span class="line">        <span class="comment">// 将该建筑方式告知了项目经理</span></span><br><span class="line">        Director director = <span class="keyword">new</span> Director(builderB);</span><br><span class="line">        <span class="comment">// 造别墅，建造方式在make方法里订好了</span></span><br><span class="line">        director.make(<span class="string">"别墅"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"==========="</span>);</span><br><span class="line">        <span class="comment">// 造公寓</span></span><br><span class="line">        director.make(<span class="string">"公寓"</span>);</span><br><span class="line">				<span class="comment">// 获得结果</span></span><br><span class="line">        Department result = builderB.getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>可以避免较多参数构造函数的方法</li>
+<li>可以分步创建对象，并可以指定创建的方式</li>
+<li>主管类接收具体的创建方法，根据不同的要求创建不同形式的产品</li>
+<li>缺点是会增加多个具体生成器或产品类</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/06/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/06/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" itemprop="url">单例模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-06T08:13:31+08:00">
+                2021-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/06/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/06/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
+<li>单例类：只能创建一个实例的类。</li>
+<li>访问类：使用单例类。</li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
+<li>饿汉式：类加载就会倒置该单实例对象被创建。</li>
+<li>懒汉式：类加载不会导致该单实例对象被创建，而是首次使用该对象才会创建。</li>
+</ul>
+<h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>静态方法赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 类加载时赋值</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton1 instance = <span class="keyword">new</span> Singleton1();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对外提供</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态代码块</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton2</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 类加载时赋值</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton2 instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        instance = <span class="keyword">new</span> Singleton2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对外提供</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton3</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明该对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton3 instance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 提供静态方法获取</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 防止多线程并发，同步锁</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton3();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>双重检查</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton4</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">		<span class="comment">// 防止指令重排序</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton4 instance;</span><br><span class="line">		</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton4 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton4<span class="class">.<span class="keyword">class</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton4();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态内部类</p>
+<p>外部类初始化的时候不会去创建内部类，通过调用内部类的方法来初始化内部类，静态属性只会被实例化一次，从而创建了单例对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton5</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHandler</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton5 instance = <span class="keyword">new</span> Singleton5();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 对外提供</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton5 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHandler.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="枚举方式"><a href="#枚举方式" class="headerlink" title="枚举方式"></a>枚举方式</h3><p>枚举是线程安全的，并且只会装载一次。属于饿汉式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">enum Type&#123;</span><br><span class="line">    A,B,C,D;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建enum时，编译器会自动为我们生成一个继承自java.lang.Enum的类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Type extends Enum&#123;</span><br><span class="line">    public static final Type A;</span><br><span class="line">    public static final Type B;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>单例类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton implements Serializable &#123; </span><br><span class="line">    &#x2F;&#x2F;私有构造方法</span><br><span class="line">    private Singleton() &#123;&#125;</span><br><span class="line">    private static class SingletonHolder &#123;</span><br><span class="line">        private static final Singleton INSTANCE &#x3D; new Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;对外提供静态方法获取该对象</span><br><span class="line">    public static Singleton getInstance() &#123;</span><br><span class="line">        return SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">//往文件中写对象</span></span><br><span class="line"><span class="comment">//writeObject2File(); //从文件中读取对象</span></span><br><span class="line">        Singleton s1 = readObjectFromFile();</span><br><span class="line">        Singleton s2 = readObjectFromFile();</span><br><span class="line"><span class="comment">//判断两个反序列化后的对象是否是同一个对象</span></span><br><span class="line">        System.out.println(s1 == s2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Singleton <span class="title">readObjectFromFile</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123; <span class="comment">//创建对象输入流对象</span></span><br><span class="line">        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span></span><br><span class="line">                FileInputStream(<span class="string">"C:\\Users\\Think\\Desktop\\a.txt"</span>)); <span class="comment">//第一个读取Singleton对象</span></span><br><span class="line">        Singleton instance = (Singleton) ois.readObject();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeObject2File</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123; <span class="comment">//获取Singleton类的对象</span></span><br><span class="line">        Singleton instance = Singleton.getInstance(); <span class="comment">//创建对象输出流</span></span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span></span><br><span class="line">                FileOutputStream(<span class="string">"C:\\Users\\Think\\Desktop\\a.txt"</span>));</span><br><span class="line"><span class="comment">//将instance对象写出到文件中</span></span><br><span class="line">        oos.writeObject(instance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解决</p>
+<p>在Singleton类中添加readResolve()方法，在反序列化时被反射调用，如果定义了这个方法，就返回这个方法的值，如果没有定义，则返回新new出来的对象。</p>
+<p>在ObjectInputStream类，反序列化过程中会发射调用此方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123; </span><br><span class="line">		<span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//对外提供静态方法获取该对象</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		* 下面是为了解决序列化反序列化破解单例模式 */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//获取Singleton类的字节码对象</span></span><br><span class="line">        Class clazz = Singleton<span class="class">.<span class="keyword">class</span></span>; <span class="comment">//获取Singleton类的私有无参构造方法对象</span></span><br><span class="line">        Constructor constructor = clazz.getDeclaredConstructor(); <span class="comment">//取消访问检查</span></span><br><span class="line">        constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">//创建Singleton类的对象s1</span></span><br><span class="line">        Singleton s1 = (Singleton) constructor.newInstance(); <span class="comment">//创建Singleton类的对象s2</span></span><br><span class="line">        Singleton s2 = (Singleton) constructor.newInstance();</span><br><span class="line">        <span class="comment">//判断通过反射创建的两个Singleton对象是否是同一个对象</span></span><br><span class="line">        System.out.println(s1 == s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<p>通过反射方式调用构造方法进行创建单例时，直接抛出异常，不允许反射调用即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    &#x2F;&#x2F;私有构造方法</span><br><span class="line">    private Singleton() &#123;</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 反射破解单例模式需要添加的代码</span><br><span class="line">         *&#x2F;</span><br><span class="line">        if (instance !&#x3D; null) &#123;</span><br><span class="line">            throw new RuntimeException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static volatile Singleton instance; &#x2F;&#x2F;对外提供静态方法获取该对象</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance() &#123;</span><br><span class="line">        if (instance !&#x3D; null) &#123;</span><br><span class="line">            return instance;</span><br><span class="line">        &#125;</span><br><span class="line">        synchronized (Singleton.class) &#123;</span><br><span class="line">            if (instance !&#x3D; null) &#123;</span><br><span class="line">                return instance;</span><br><span class="line">            &#125;</span><br><span class="line">            instance &#x3D; new Singleton();</span><br><span class="line">            return instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1634,354 +2175,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="url">第15周LeetCode记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T21:07:01+08:00">
-                2021-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E7%AC%AC15%E5%91%A8LeetCode%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="12-22-71-两地调度"><a href="#12-22-71-两地调度" class="headerlink" title="12.22 71. 两地调度"></a>12.22 71. 两地调度</h3><p>公司计划面试 2N 人。第 i 人飞往 A 市的费用为costs[i][0]，飞往 B 市的费用为 costs[i][1]。</p>
-<p>返回将每个人都飞到某座城市的最低费用，要求每个城市都有 N 人抵达。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：[[10,20],[30,200],[400,50],[30,20]]</span><br><span class="line">输出：110</span><br><span class="line">解释：</span><br><span class="line">第一个人去 A 市，费用为 10。</span><br><span class="line">第二个人去 A 市，费用为 30。</span><br><span class="line">第三个人去 B 市，费用为 50。</span><br><span class="line">第四个人去 B 市，费用为 20。</span><br><span class="line"></span><br><span class="line">最低总费用为 10 + 30 + 50 + 20 &#x3D; 110，每个城市都有一半的人在面试。</span><br></pre></td></tr></table></figure>
-
-<h4 id="最优解思路"><a href="#最优解思路" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>公司首先将这 2N 个人全都安排飞往 BB 市，再选出 N 个人改变它们的行程，让他们飞往 A 市。如果选择改变一个人的行程，那么公司将会额外付出 price_A - price_B 的费用，这个费用可正可负。因此最优的方案是，选出 <code>price_A - price_B</code> 最小的 N<em>N</em> 个人，让他们飞往 <code>A</code> 市，其余人飞往 <code>B</code> 市。</p>
-<h4 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoCitySchedCost(self, costs: List[List[int]]) -&gt; int:</span><br><span class="line">        # Sort by a gain which company has </span><br><span class="line">        # by sending a person to city A and not to city B</span><br><span class="line">        costs.sort(key &#x3D; lambda x : x[0] - x[1])</span><br><span class="line">        </span><br><span class="line">        total &#x3D; 0</span><br><span class="line">        n &#x3D; len(costs) &#x2F;&#x2F; 2</span><br><span class="line">        # To optimize the company expenses,</span><br><span class="line">        # send the first n persons to the city A</span><br><span class="line">        # and the others to the city B</span><br><span class="line">        for i in range(n):</span><br><span class="line">            total +&#x3D; costs[i][0] + costs[i + n][1]</span><br><span class="line">        return total</span><br></pre></td></tr></table></figure>
-
-<h3 id="12-23-72-最长单词"><a href="#12-23-72-最长单词" class="headerlink" title="12.23 72. 最长单词"></a>12.23 72. 最长单词</h3><p>给定一组单词words，编写一个程序，找出其中的最长单词，且该单词由这组单词中的其他单词组合而成。若有多个长度相同的结果，返回其中字典序最小的一项，若没有符合要求的单词则返回空字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入： [&quot;cat&quot;,&quot;banana&quot;,&quot;dog&quot;,&quot;nana&quot;,&quot;walk&quot;,&quot;walker&quot;,&quot;dogwalker&quot;]</span><br><span class="line">输出： &quot;dogwalker&quot;</span><br><span class="line">解释： &quot;dogwalker&quot;可由&quot;dog&quot;和&quot;walker&quot;组成。</span><br></pre></td></tr></table></figure>
-
-<h4 id="最优解思路-1"><a href="#最优解思路-1" class="headerlink" title="最优解思路"></a>最优解思路</h4><p>先把字符串数组排序，字符串长的在前面，相同长度的字典序小的在前面，排好序后加入到set里判断是否包含，从第一个字符串开始判断，看是否由其它字符串组成，这里可以用递归<br>递归出口： 如果字符串长的长度为0，说明遍历完了，之前的都满足条件，返回true<br>递归操作： 遍历字符串的第0个位置开始，判断set里是否有，如果0到i的字符串正好包含在set里，下次从i+1的位置开始判断，直到遍历完了，字符串长度为0，没找到则返回false</p>
-<h4 id="最优解-1"><a href="#最优解-1" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String longestWord(String[] words) &#123;</span><br><span class="line">        Arrays.sort(words,(o1,o2)-&gt;&#123;</span><br><span class="line">            if(o1.length() &#x3D;&#x3D; o2.length())</span><br><span class="line">                return o1.compareTo(o2);</span><br><span class="line">            else&#123;</span><br><span class="line">                return Integer.compare(o2.length(),o1.length());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; set &#x3D; new HashSet&lt;&gt;(Arrays.asList(words));</span><br><span class="line">        for(String word : words)&#123;</span><br><span class="line">            set.remove(word);</span><br><span class="line">            if(find(set,word))</span><br><span class="line">                 return word;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean find(Set&lt;String&gt; set, String word)&#123;</span><br><span class="line">        if(word.length() &#x3D;&#x3D; 0)</span><br><span class="line">            return true;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; word.length(); i++)&#123;</span><br><span class="line">            if(set.contains(word.substring(0,i+1)) &amp;&amp; find(set,word.substring(i+1)))</span><br><span class="line">                return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="12-26-73-二叉搜索树迭代器"><a href="#12-26-73-二叉搜索树迭代器" class="headerlink" title="12.26 73. 二叉搜索树迭代器"></a>12.26 73. 二叉搜索树迭代器</h3><p>实现一个二叉搜索树迭代器。你将使用二叉搜索树的根节点初始化迭代器。</p>
-<p>调用 <code>next()</code> 将返回二叉搜索树中的下一个最小的数。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/25/bst-tree.png" alt="img"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BSTIterator iterator &#x3D; new BSTIterator(root);</span><br><span class="line">iterator.next();    &#x2F;&#x2F; 返回 3</span><br><span class="line">iterator.next();    &#x2F;&#x2F; 返回 7</span><br><span class="line">iterator.hasNext(); &#x2F;&#x2F; 返回 true</span><br><span class="line">iterator.next();    &#x2F;&#x2F; 返回 9</span><br><span class="line">iterator.hasNext(); &#x2F;&#x2F; 返回 true</span><br><span class="line">iterator.next();    &#x2F;&#x2F; 返回 15</span><br><span class="line">iterator.hasNext(); &#x2F;&#x2F; 返回 true</span><br><span class="line">iterator.next();    &#x2F;&#x2F; 返回 20</span><br><span class="line">iterator.hasNext(); &#x2F;&#x2F; 返回 false</span><br></pre></td></tr></table></figure>
-
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>中序遍历树，各节点的值加入列表，pop。</p>
-<h4 id="最优解-2"><a href="#最优解-2" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class BSTIterator:</span><br><span class="line"></span><br><span class="line">    def __init__(self, root: TreeNode):</span><br><span class="line">        </span><br><span class="line">        # Array containing all the nodes in the sorted order</span><br><span class="line">        self.nodes_sorted &#x3D; []</span><br><span class="line">        </span><br><span class="line">        # Pointer to the next smallest element in the BST</span><br><span class="line">        self.index &#x3D; -1</span><br><span class="line">        </span><br><span class="line">        # Call to flatten the input binary search tree</span><br><span class="line">        self._inorder(root)</span><br><span class="line">        </span><br><span class="line">    def _inorder(self, root):</span><br><span class="line">        if not root:</span><br><span class="line">            return</span><br><span class="line">        self._inorder(root.left)</span><br><span class="line">        self.nodes_sorted.append(root.val)</span><br><span class="line">        self._inorder(root.right)</span><br><span class="line"></span><br><span class="line">    def next(self) -&gt; int:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        @return the next smallest number</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.index +&#x3D; 1</span><br><span class="line">        return self.nodes_sorted[self.index]</span><br><span class="line"></span><br><span class="line">    def hasNext(self) -&gt; bool:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        @return whether we have a next smallest number</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return self.index + 1 &lt; len(self.nodes_sorted)</span><br></pre></td></tr></table></figure>
-
-<h3 id="12-26-74-买卖股票的最佳时机"><a href="#12-26-74-买卖股票的最佳时机" class="headerlink" title="12.26 74. 买卖股票的最佳时机"></a>12.26 74. 买卖股票的最佳时机</h3><p>给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；非负整数 fee 代表了交易股票的手续费用。</p>
-<p>你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
-<p>返回获得利润的最大值。</p>
-<p>注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: prices &#x3D; [1, 3, 2, 8, 4, 9], fee &#x3D; 2</span><br><span class="line">输出: 8</span><br><span class="line">解释: 能够达到的最大利润:  </span><br><span class="line">在此处买入 prices[0] &#x3D; 1</span><br><span class="line">在此处卖出 prices[3] &#x3D; 8</span><br><span class="line">在此处买入 prices[4] &#x3D; 4</span><br><span class="line">在此处卖出 prices[5] &#x3D; 9</span><br><span class="line">总利润: ((8 - 1) - 2) + ((9 - 4) - 2) &#x3D; 8.</span><br></pre></td></tr></table></figure>
-
-<h4 id="最优解思路-2"><a href="#最优解思路-2" class="headerlink" title="最优解思路"></a>最优解思路</h4><h5 id="解一：动态规划"><a href="#解一：动态规划" class="headerlink" title="解一：动态规划"></a>解一：动态规划</h5><p>考虑 dp[i][0]的转移方程，如果这一天交易完后手里没有股票，那么可能的转移状态为前一天已经没有股票，即  dp[i-1][0]，或者前一天结束的时候手里持有一支股票，即  dp[i-1][1]，这时候我们要将其卖出，并获得prices[i] 的收益，但需要支付 fee 的手续费。因此为了收益最大化，我们列出如下的转移方程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][0]&#x3D;max&#123;dp[i−1][0],dp[i−1][1]+prices[i]−fee&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再来按照同样的方式考虑 dp[i][1] 按状态转移，那么可能的转移状态为前一天已经持有一支股票，即 dp[i-1]][1]，或者前一天结束时还没有股票，即dp[i-1]][0] ，这时候我们要将其买入，并减少prices[i] 的收益。可以列出如下的转移方程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][1]&#x3D;max&#123;dp[i−1][1],dp[i−1][0]−prices[i]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于初始状态，根据状态定义我们可以知道第 0 天交易结束的时候有dp[0][0]=0 以及dp[0][1]=-price[0].</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxProfit(self, prices: List[int], fee: int) -&gt; int:</span><br><span class="line">        n &#x3D; len(prices)</span><br><span class="line">        dp &#x3D; [[0, -prices[0]]] + [[0, 0] for _ in range(n - 1)]</span><br><span class="line">        for i in range(1, n):</span><br><span class="line">            dp[i][0] &#x3D; max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)</span><br><span class="line">            dp[i][1] &#x3D; max(dp[i - 1][1], dp[i - 1][0] - prices[i])</span><br><span class="line">        return dp[n - 1][0]</span><br></pre></td></tr></table></figure>
-
-<h5 id="解二：贪心算法"><a href="#解二：贪心算法" class="headerlink" title="解二：贪心算法"></a>解二：贪心算法</h5><p>即<strong>当我们卖出一支股票时，我们就立即获得了以相同价格并且免除手续费买入一支股票的权利</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxProfit(self, prices: List[int], fee: int) -&gt; int:</span><br><span class="line">        n &#x3D; len(prices)</span><br><span class="line">        buy &#x3D; prices[0] + fee</span><br><span class="line">        profit &#x3D; 0</span><br><span class="line">        for i in range(1, n):</span><br><span class="line">            if prices[i] + fee &lt; buy:</span><br><span class="line">                buy &#x3D; prices[i] + fee</span><br><span class="line">            elif prices[i] &gt; buy:</span><br><span class="line">                profit +&#x3D; prices[i] - buy</span><br><span class="line">                buy &#x3D; prices[i]</span><br><span class="line">        return profit</span><br></pre></td></tr></table></figure>
-
-<h3 id="12-28-75-LRU缓存机制"><a href="#12-28-75-LRU缓存机制" class="headerlink" title="12.28 75. LRU缓存机制"></a>12.28 75. LRU缓存机制</h3><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制 。<br>实现 LRUCache 类：</p>
-<p>LRUCache(int capacity) 以正整数作为容量 capacity 初始化 LRU 缓存<br>int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。<br>void put(int key, int value) 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>LRU缓存机制是通过hash表辅以双向链表实现的。</p>
-<ul>
-<li>双向链表按照被使用的顺序存储了这些键值对，靠近头部的键值对是最近使用的，而靠近尾部的键值对是最久未使用的。</li>
-<li>哈希表即为普通的哈希映射（HashMap），通过缓存数据的键映射到其在双向链表中的位置。</li>
-</ul>
-<h4 id="最优解-3"><a href="#最优解-3" class="headerlink" title="最优解"></a>最优解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">class DLinkedNode:</span><br><span class="line">    def __init__(self, key&#x3D;0, value&#x3D;0):</span><br><span class="line">        self.key &#x3D; key</span><br><span class="line">        self.value &#x3D; value</span><br><span class="line">        self.prev &#x3D; None</span><br><span class="line">        self.next &#x3D; None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class LRUCache:</span><br><span class="line"></span><br><span class="line">    def __init__(self, capacity: int):</span><br><span class="line">        self.cache &#x3D; dict()</span><br><span class="line">        # 使用伪头部和伪尾部节点    </span><br><span class="line">        self.head &#x3D; DLinkedNode()</span><br><span class="line">        self.tail &#x3D; DLinkedNode()</span><br><span class="line">        self.head.next &#x3D; self.tail</span><br><span class="line">        self.tail.prev &#x3D; self.head</span><br><span class="line">        self.capacity &#x3D; capacity</span><br><span class="line">        self.size &#x3D; 0</span><br><span class="line"></span><br><span class="line">    def get(self, key: int) -&gt; int:</span><br><span class="line">        if key not in self.cache:</span><br><span class="line">            return -1</span><br><span class="line">        # 如果 key 存在，先通过哈希表定位，再移到头部</span><br><span class="line">        node &#x3D; self.cache[key]</span><br><span class="line">        self.moveToHead(node)</span><br><span class="line">        return node.value</span><br><span class="line"></span><br><span class="line">    def put(self, key: int, value: int) -&gt; None:</span><br><span class="line">        if key not in self.cache:</span><br><span class="line">            # 如果 key 不存在，创建一个新的节点</span><br><span class="line">            node &#x3D; DLinkedNode(key, value)</span><br><span class="line">            # 添加进哈希表</span><br><span class="line">            self.cache[key] &#x3D; node</span><br><span class="line">            # 添加至双向链表的头部</span><br><span class="line">            self.addToHead(node)</span><br><span class="line">            self.size +&#x3D; 1</span><br><span class="line">            if self.size &gt; self.capacity:</span><br><span class="line">                # 如果超出容量，删除双向链表的尾部节点</span><br><span class="line">                removed &#x3D; self.removeTail()</span><br><span class="line">                # 删除哈希表中对应的项</span><br><span class="line">                self.cache.pop(removed.key)</span><br><span class="line">                self.size -&#x3D; 1</span><br><span class="line">        else:</span><br><span class="line">            # 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部</span><br><span class="line">            node &#x3D; self.cache[key]</span><br><span class="line">            node.value &#x3D; value</span><br><span class="line">            self.moveToHead(node)</span><br><span class="line">    </span><br><span class="line">    def addToHead(self, node):</span><br><span class="line">        node.prev &#x3D; self.head</span><br><span class="line">        node.next &#x3D; self.head.next</span><br><span class="line">        self.head.next.prev &#x3D; node</span><br><span class="line">        self.head.next &#x3D; node</span><br><span class="line">    </span><br><span class="line">    def removeNode(self, node):</span><br><span class="line">        node.prev.next &#x3D; node.next</span><br><span class="line">        node.next.prev &#x3D; node.prev</span><br><span class="line"></span><br><span class="line">    def moveToHead(self, node):</span><br><span class="line">        self.removeNode(node)</span><br><span class="line">        self.addToHead(node)</span><br><span class="line"></span><br><span class="line">    def removeTail(self):</span><br><span class="line">        node &#x3D; self.tail.prev</span><br><span class="line">        self.removeNode(node)</span><br><span class="line">        return node</span><br></pre></td></tr></table></figure>
-
-<h4 id="最优解总结"><a href="#最优解总结" class="headerlink" title="最优解总结"></a>最优解总结</h4><p>hash表key是存出键，value是链表的索引，链表的值时value。这样查询，插入复杂度都是o1</p>
-<p>get操作，判断是否存在，不存在返回-1，存在把对应的链表索引换到头部。</p>
-<p>put操作，若存在和get操作类似，不存在则创建一个新的链表节点，放到头部再判断长度，超过规定长度就会从尾部去除。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="url">读书单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-03T01:38:07+08:00">
-                2021-01-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E8%AF%BB%E4%B9%A6%E5%8D%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="2020已读"><a href="#2020已读" class="headerlink" title="2020已读"></a>2020已读</h3><ol>
-<li>java核心卷上册（2020.7）</li>
-<li>redis深度历险（2020.10）</li>
-<li>四个春天（2020.11）</li>
-<li>江城（2020.10）</li>
-</ol>
-<h3 id="2021计划读书10本"><a href="#2021计划读书10本" class="headerlink" title="2021计划读书10本"></a>2021计划读书10本</h3><ol>
-<li>日语初级上册</li>
-<li>日语初级下册</li>
-<li>人间失格</li>
-<li>活着</li>
-<li>金粉世家</li>
-<li>深入理解jvm</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -2025,7 +2225,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
