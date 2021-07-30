@@ -262,6 +262,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/30/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/30/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" itemprop="url">桥接模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-30T21:45:40+08:00">
+                2021-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/30/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/30/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>可将一个大类或一系列紧密相关的类拆分为抽象和实现两个独立的层次结构，从而能在开发时分别使用。</p>
+<ul>
+<li>抽象化角色：定义抽象类，包含一个对实现化对象的引用。</li>
+<li>扩展抽象化画角色：抽象化角色的子类，实现父类中的业务方法，通过组合关系调用实现化角色中的业务方法。</li>
+<li>实现化角色：定义实现化角色的接口，供扩展抽象化角色调用</li>
+<li>具体实现化角色：给出实现化角色接口的具体实现。</li>
+</ul>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>某户人家买了一个小米精灵，想把已经有的电视，电灯等电器接入到小米精灵中，使小米精灵成为一个终端，各自的遥控器小米精灵达到控制各自电器的功能。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><img src="https://img2020.cnblogs.com/blog/1496566/202107/1496566-20210730221613314-1094675452.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象化角色 遥控器类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Control</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Device device;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Control</span><span class="params">(Device device)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.device = device;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">turnOff</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 扩展抽象化画角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudioControl</span> <span class="keyword">extends</span> <span class="title">Control</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AudioControl</span><span class="params">(Device device)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(device);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (device.isEnable()) &#123;</span><br><span class="line">            device.setNumber(device.getNumber() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">"调高声音，现在是"</span>+device.getNumber());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (device.isEnable()) &#123;</span><br><span class="line">            device.setNumber(device.getNumber() - <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">"调低声音，现在是"</span>+device.getNumber());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        device.enable();</span><br><span class="line">        device.setNumber(<span class="number">60</span>);</span><br><span class="line">        System.out.println(<span class="string">"开机"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOff</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        device.disable();</span><br><span class="line">        System.out.println(<span class="string">"关机"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConditionControl</span> <span class="keyword">extends</span> <span class="title">Control</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConditionControl</span><span class="params">(Device device)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(device);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">up</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (device.isEnable()) &#123;</span><br><span class="line">            device.setNumber(device.getNumber() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">"调高温度,现在是"</span> + device.getNumber());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">down</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (device.isEnable()) &#123;</span><br><span class="line">            device.setNumber(device.getNumber() - <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">"调低温度,现在是"</span> + device.getNumber());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        device.enable();</span><br><span class="line">        device.setNumber(<span class="number">25</span>);</span><br><span class="line">        System.out.println(<span class="string">"开空调"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOff</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        device.disable();</span><br><span class="line">        System.out.println(<span class="string">"关空调"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现化角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Device</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isEnable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">disable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(<span class="keyword">int</span> num)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体实现化角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Audio</span> <span class="keyword">implements</span> <span class="title">Device</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> status;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEnable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"音响开机了"</span>);</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"音响关机了"</span>);</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"现在是"</span> + number + <span class="string">"音量大小"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"已设置音量为"</span> + num);</span><br><span class="line">        <span class="keyword">this</span>.number = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirCondition</span> <span class="keyword">implements</span> <span class="title">Device</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> status;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEnable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"空调开机了"</span>);</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"空调关机了"</span>);</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"现在是"</span> + number + <span class="string">"温度"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"已设置温度为"</span> + num);</span><br><span class="line">        <span class="keyword">this</span>.number = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>面向对象编程，面对抽象编程</li>
+<li>相同维度是否可以聚合成为一个类</li>
+<li>需要在运行时切换不同的实现方法，通过切换抽象部分中的实现类来实现。</li>
+<li>开闭原则，单一职责原则。</li>
+<li>缺点是代码复杂度增加。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/28/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1891,218 +2060,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/10/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E4%B9%9D-%E5%88%97%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/10/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E4%B9%9D-%E5%88%97%E8%A1%A8/" itemprop="url">《redis深度历险》九-列表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-10T21:46:44+08:00">
-                2021-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/10/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E4%B9%9D-%E5%88%97%E8%A1%A8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/10/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E4%B9%9D-%E5%88%97%E8%A1%A8/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h3><p>redis为了节约内存空间使用，zset和hash容器对象在元素个数较少的时候，采用压缩列表（zipList）进行存储，压缩列表是一块连续的内存空间，元素之间挨着存储，没有任何冗余空隙。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd programmings 1.0 go 2.0 java 3.0 python</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; debug object programmings</span><br><span class="line">Value at:0x7fb20fa071e0 refcount:1 encoding:ziplist serializedlength:36 lru:12015574 lru_seconds_idle:15</span><br><span class="line">127.0.0.1:6379&gt; hmset books go a python b java c</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; debug object books</span><br><span class="line">Value at:0x7fb20fa06770 refcount:1 encoding:ziplist serializedlength:39 lru:12015628 lru_seconds_idle:18</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct ziplist&lt;T&gt; &#123;</span><br><span class="line">	int32 zlbytes; &#x2F;&#x2F; 整个压缩列表占用字节数</span><br><span class="line">	int32 zltail_offset; &#x2F;&#x2F; 最后一个元素距离压缩列表起始位置偏移量，用于快速定位到最后一个节点</span><br><span class="line">	int16 zllength; &#x2F;&#x2F; 元素个数</span><br><span class="line">	T[] entries; &#x2F;&#x2F; 元素内容列表，挨个紧凑存储</span><br><span class="line">	int8 zlend; &#x2F;&#x2F; 标志压缩列表的结束，恒为0xFF</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201120135210383-698250512.png" alt=""></p>
-<p>压缩列表为了支持双向遍历，所以用ztail_offset字段，快速定位到最后一个，然后倒着遍历。</p>
-<p>entry块随着容纳的元素类型不同，也会有不一样的结构。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct entry&#123;</span><br><span class="line">	int&lt;var&gt; prevlen; &#x2F;&#x2F; 前一个entry的字节长度</span><br><span class="line">	int&lt;var&gt; encoding; &#x2F;&#x2F; 元素类型编码</span><br><span class="line">	optional byte[] content; &#x2F;&#x2F; 元素内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>它的 prevlen 字段表示前一个 entry 的字节长度，当压缩列表倒着遍历时，需要通过这 个字段来快速定位到下一个元素的位置。它是一个变长的整数，当字符串长度小于 254(0xFE) 时，使用一个字节表示;如果达到或超出 254(0xFE) 那就使用 5 个字节来表 示。第一个字节是 0xFE(254)，剩余四个字节表示字符串长度。你可能会觉得用 5 个字节来 表示字符串长度，是不是太浪费了。我们可以算一下，当字符串长度比较长的时候，其实 5 个字节也只占用了不到(5/(254+5))&lt;2%的空间。</p>
-<p>encoding 字段存储了元素内容的编码类型信息，ziplist 通过这个字段来决定后面的 content 内容的形式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、00xxxxxx 最大长度位 63 的短字符串，后面的 6 个位存储字符串的位数，剩余的字 节就是字符串的内容。</span><br><span class="line">2、01xxxxxx xxxxxxxx 中等长度的字符串，后面 14 个位来表示字符串的长度，剩余的 字节就是字符串的内容。</span><br><span class="line">3、10000000 aaaaaaaa bbbbbbbb cccccccc dddddddd 特大字符串，需要使用额外 4 个字节 来表示长度。第一个字节前缀是 10，剩余 6 位没有使用，统一置为零。后面跟着字符串内 容。不过这样的大字符串是没有机会使用的，压缩列表通常只是用来存储小数据的。</span><br><span class="line">4、11000000 表示 int16，后跟两个字节表示整数。</span><br><span class="line">5、11010000 表示 int32，后跟四个字节表示整数。</span><br><span class="line">6、11100000 表示 int64，后跟八个字节表示整数。</span><br><span class="line">7、11110000 表示 int24，后跟三个字节表示整数。</span><br><span class="line">8、11111110 表示 int8，后跟一个字节表示整数。</span><br><span class="line">9、11111111 表示 ziplist 的结束，也就是 zlend 的值 0xFF。</span><br><span class="line">10、1111xxxx 表示极小整数，xxxx 的范围只能是 (0001~1101), 也就是 1~13，因为</span><br><span class="line">0000、1110、1111 都被占用了。读取到的 value 需要将 xxxx 减 1，也就是整数 0~12 就是 最终的 value。</span><br><span class="line">注意到 content 字段在结构体中定义为 optional 类型，表示这个字段是可选的，对于很 小的整数而言，它的内容已经内联到 encoding 字段的尾部了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h4><p>因为 ziplist 都是紧凑存储，没有冗余空间 (对比一下 Redis 的字符串结构)。意味着插 入一个新的元素就需要调用 realloc 扩展内存。取决于内存分配器算法和当前的 ziplist 内存 大小，realloc 可能会重新分配新的内存空间，并将之前的内容一次性拷贝到新的地址，也可 能在原有的地址上进行扩展，这时就不需要进行旧内容的内存拷贝。</p>
-<p>如果 ziplist 占据内存太大，重新分配内存和拷贝内存就会有很大的消耗。所以 ziplist 不适合存储大型字符串，存储的元素也不宜过多。</p>
-<h4 id="级联更新"><a href="#级联更新" class="headerlink" title="级联更新"></a>级联更新</h4><p>前面提到每个 entry 都会有一个 prevlen 字段存储前一个 entry 的长度。如果内容小于 254 字节，prevlen 用 1 字节存储，否则就是 5 字节。这意味着如果某个 entry 经过了修改 操作从 253 字节变成了 254 字节，那么它的下一个 entry 的 prevlen 字段就要更新，从 1 个字节扩展到 5 个字节;如果这个 entry 的长度本来也是 253 字节，那么后面 entry 的 prevlen 字段还得继续更新。</p>
-<p>如果 ziplist 里面每个 entry 恰好都存储了 253 字节的内容，那么第一个 entry 内容的 修改就会导致后续所有 entry 的级联更新，这就是一个比较耗费计算资源的操作。</p>
-<h3 id="快速列表"><a href="#快速列表" class="headerlink" title="快速列表"></a>快速列表</h3><p>redis早期版本存储list列表数据结构使用的是压缩列表ziplist和普通的双向链表linkedList，也就是元素少的时候用ziplist，多的时候用linkedList。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 链表的节点</span><br><span class="line">struct listNode&lt;T&gt; &#123;</span><br><span class="line">	listNode* prev;</span><br><span class="line">	listNode* next;</span><br><span class="line">	T value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 链表</span><br><span class="line">struct list &#123;</span><br><span class="line">	listNode *head;</span><br><span class="line">	listNode *tail;</span><br><span class="line">	long length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>链表的prev和next指针就要占去16个字节，另外每个节点的内存都是单独分配，加剧内存的碎片化，影响内存管理效率。后来使用quickList代替ziplist和linkedList</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; rpush li_test go java python</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; debug object li_test</span><br><span class="line">Value at:0x7fc328405bf0 refcount:1 encoding:quicklist serializedlength:31 lru:12103071 </span><br><span class="line">lru_seconds_idle:8 ql_nodes:1 ql_avg_node:3.00 ql_ziplist_max:-2 ql_compressed:0 ql_uncompressed_size:29</span><br></pre></td></tr></table></figure>
-
-<p>quickList是zipList和linkedList混合体，他将linkedList按段切分，每一段使用ziplist让存储紧凑，多个zipList之间使用双向指针串接起来。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">struct ziplist&#123;...&#125;</span><br><span class="line"></span><br><span class="line">struct ziplist_compressed&#123;</span><br><span class="line">	int32 size;</span><br><span class="line">	byte[] compresses_data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct quicklistNode &#123;</span><br><span class="line">	quicklistNode* prev;</span><br><span class="line">	quicklistNode* next;</span><br><span class="line">	ziplist* zl; &#x2F;&#x2F; 指向压缩列表</span><br><span class="line">	int32 size;  &#x2F;&#x2F; ziplist的字节总数</span><br><span class="line">	int16 count;  &#x2F;&#x2F; ziplist的元素数量</span><br><span class="line">	int2 encoding &#x2F;&#x2F; 存储形式2bit</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct quickList &#123;</span><br><span class="line">	quicklistNode* head;</span><br><span class="line">	quicklistNode* tail;</span><br><span class="line">	long count; &#x2F;&#x2F; 元素总数</span><br><span class="line">	int nodes； &#x2F;&#x2F; ziplist节点的个数</span><br><span class="line">	int compressDepth &#x2F;&#x2F; L2F算法深度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201121140632249-1889622112.png" alt=""></p>
-<p>上述就是quick的大致结构，为了进一步节约空间，redis还会对ziplist进行压缩存储，使用LZF算法压缩，可以选择压缩深度。</p>
-<h4 id="每个ziplist存多少元素"><a href="#每个ziplist存多少元素" class="headerlink" title="每个ziplist存多少元素"></a>每个ziplist存多少元素</h4><p><strong>quickList内部默认单个ziplist长度为8kb</strong>，超出了这个字节数，就会另起一个ziplist，ziplist长度由配置参数<code>list-max-ziplist-size</code>决定。</p>
-<h4 id="压缩深度"><a href="#压缩深度" class="headerlink" title="压缩深度"></a>压缩深度</h4><p>quicklist默认的压缩深度为0，就是不压缩，为了支持快速的push/pop操作，quicklist的首尾两个ziplist不压缩，因此压缩深度1。如果首尾前两个都不压缩，那么压缩深度就是2。</p>
-<h3 id="跳跃列表"><a href="#跳跃列表" class="headerlink" title="跳跃列表"></a>跳跃列表</h3><h4 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h4><p>redis的跳跃列表共有64层，每一个kv块对应的结构如下面的代码中zslnode结构，kv header也是这个结构，只不过value字段是NULL值无效的，score是Double.MIN_VALUE，用来垫底的。kv之间使用指针串起来形成了双向链表结构，他们是有序排列的，从小到大，不同的kv层高可能不一样，层数越高的kv越少，同一层的kv会使用指针串起来。每一层元素的遍历都是从kv header出发。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201121150044099-309825589.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">struct zslnode &#123; </span><br><span class="line">	string value;</span><br><span class="line">	double score;</span><br><span class="line">	zslnode*[] forwards; &#x2F;&#x2F; 多层连接指针</span><br><span class="line">	zslnode* backward; &#x2F;&#x2F; 回溯指针</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct zsl &#123;</span><br><span class="line">	zslnode* header; &#x2F;&#x2F; 跳跃列表头指针</span><br><span class="line">	int maxLevel;  &#x2F;&#x2F; 跳跃列表当前的最高层</span><br><span class="line">	map&lt;String,zslnode*&gt; &#x2F;&#x2F; hash结构的所有键值对</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="查找过程"><a href="#查找过程" class="headerlink" title="查找过程"></a>查找过程</h4><p>设想如果跳跃列表只有一层，插入，删除需要定位到相应的位置节点。需要逐个遍历。时间复杂度On。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201121153308429-848556805.png" alt=""></p>
-<p>我们要定位到那个紫色的 kv，需要从 header 的最高层开始遍历 找到第一个节点(最后一个比“我”小的元素)，然后从这个节点开始降一层再遍 历找到第二个节点(最后一个比“我”小的元素)，然后一直降到最底层进行遍历 就找到了期望的节点(最底层的最后一个比我“小”的元素)。 </p>
-<p>我们将中间经过的一系列节点称之为“搜索路径”，它是从最高层一直到最底 层的每一层最后一个比“我”小的元素节点列表。 有了这个搜索路径，我们就可以插入这个新节点了。不过这个插λ过程也不是 特别简单。因为新插人的节点到底有多少层，得有个算法来分配一下，跳跃列表使 用的是随机算法。 </p>
-<h4 id="随机层数"><a href="#随机层数" class="headerlink" title="随机层数"></a>随机层数</h4><p>对于每一个新插入的节点，都需要调用一个随机算法给它分配一个合理的层数，直观上期望的目标是 50% 的概率被分配到 Levell, 25% 的概率被分配到 Level2, 12.5% 的概率被分配到 Level3，以此类推， 2*10^-63 的概率被分配到最顶层，因为这里每 一层的晋升率是 50%。 </p>
-<p>redis标准代码中晋升率为25%，意味着更加扁平化，层高相对较低，遍历的时候从顶层开始往下遍历会非常浪费，跳跃列表会记录当前最高层数maxLevel，遍历时从这个maxlevel开始遍历，性能会提高很多。</p>
-<h4 id="元素排名"><a href="#元素排名" class="headerlink" title="元素排名"></a>元素排名</h4><p>redis在skiplist的forward指针上进行了优化，给每一个forward指针都增加了span属性，表示从前一个节点沿着当前层的forward指针跳到当前这个节点，中间会跳过多少个节点，redis在插入，删除时都会更新span大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct zslnode &#123; </span><br><span class="line">	string value;</span><br><span class="line">	double score;</span><br><span class="line">	zslforward*[] forwards; &#x2F;&#x2F; 多层连接指针</span><br><span class="line">	zslnode* backward; &#x2F;&#x2F; 回溯指针</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct zslforward &#123;</span><br><span class="line">	zslnode* item;</span><br><span class="line">	long span;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样当我们计算一个元素排名时，只需要将搜索路径经过的所有节点跨度span叠加，就可以获取最终的rank值。</p>
-<h4 id="插入过程"><a href="#插入过程" class="headerlink" title="插入过程"></a>插入过程</h4><p>首先我们在搜索合适插入点的过程中将“搜索路径”找出来，然后就可以开始 创建新节点。创建的时候需要给这个节点随机分配一个层数，再将搜索路径上的节 点和这个新节点通过前向后向指针串起来。如果分配的新节点的高度高于当前跳跃 列表的最大高度，就需要更新一下跳跃列表的最大高度。 </p>
-<h4 id="删除过程"><a href="#删除过程" class="headerlink" title="删除过程"></a>删除过程</h4><p>删除过程和插入过程类似，都需先把这个“搜索路径”找出来，然后对于每个层的相关节点重排一下前向后向指针，同时还要注意更新一下最高层数 maxLevel。 </p>
-<h4 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h4><p>当我们调用 zadd 方法时，如果对应的 value 不存在，那就是插入过程。如果这个 value 已经存在了，只是调整一下 score 的值， 那就需要走一个更新流程。假设这个新 的 score 值不会带来排序上的改变，那么就不需要调整位置 ， 直接修改元素的 score 值 就可以了。但是如果排序位置改变了，那就要调整位置。那么该如何调整位置呢? </p>
-<p>一个简单的策略就是先删除这个元素，再插入这个元素，需要经过两次路径搜 索。 Redis就是这么干的。不过 Redis遇到 score值改变了的情况就直接删除后再插入， 不会去判断位置是否需要调整。</p>
-<p><strong>如果score值都相同，还需要比较value值</strong></p>
-<h3 id="紧凑列表"><a href="#紧凑列表" class="headerlink" title="紧凑列表"></a>紧凑列表</h3><p>是对ziplist结构的改进，在存储空间上会更加节省，结构也比ziplist精简。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct listpack&lt;T&gt; &#123;</span><br><span class="line">	int32 total_bytes; &#x2F;&#x2F; 占用的总字节数</span><br><span class="line">	int16 size; &#x2F;&#x2F; 元素个数</span><br><span class="line">	T[] entries; &#x2F;&#x2F; 紧凑排列的元素列表</span><br><span class="line">	int8 end; &#x2F;&#x2F; 恒为0xFF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201123204735400-618394893.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct lpentry &#123;</span><br><span class="line">	int&lt;var&gt; encoding;</span><br><span class="line">	optional byte[] content;</span><br><span class="line">	int&lt;var&gt; length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在entry结构中，长度字段存储的不是上一个元素的长度，是当前元素的长度，所以可以通过total_bytes字段和最后一个元素的长度字段计算出来。</p>
-<h4 id="级联更新-1"><a href="#级联更新-1" class="headerlink" title="级联更新"></a>级联更新</h4><p>listpack 的设计彻底消灭了 ziplist 存在的级联更新行为，元素与元素之间完全独立，不 会因为一个元素的长度变长就导致后续的元素内容会受到影响。</p>
-<ul>
-<li>ziplist中，前一个entry长度可能会影响后一个prevlen长度，导致关联项更新。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2153,7 +2110,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
