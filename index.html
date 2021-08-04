@@ -262,6 +262,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/08/04/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jimmy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/08/04/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" itemprop="url">组合模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-04T22:20:03+08:00">
+                2021-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/08/04/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/08/04/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>可以使用它将对象组合成树状结构，并且能像使用独立对象一样使用他们。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><img src="https://img2020.cnblogs.com/blog/1496566/202108/1496566-20210804223154625-223642216.png" style="zoom:50%;" />
+
+<h4 id="组件Component"><a href="#组件Component" class="headerlink" title="组件Component"></a>组件Component</h4><p>接口描述了树种简单项目和复杂项目的所有操作</p>
+<h4 id="叶节点Leaf"><a href="#叶节点Leaf" class="headerlink" title="叶节点Leaf"></a>叶节点Leaf</h4><p>是树的基本结构，不包含子项目。一般情况下，叶节点最终会完成大部分操作。</p>
+<h4 id="组合Composite"><a href="#组合Composite" class="headerlink" title="组合Composite"></a>组合Composite</h4><p>包含叶节点或其他容器等子项目的单位，容器不知道其子项目所属的具体类，他只通过通用的组件接口与其子项目交互。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>现在有一只营级军队，下属有连级，排级。每一级可以不仅可以指挥下一级，也有本级可以指挥的士兵。现在要求设计一个方法，使得所有士兵行动起来。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>Leaf相当于士兵，Composite相当于一个组织</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solider</span> <span class="keyword">implements</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"诺曼底登陆"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Organization</span> <span class="keyword">implements</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Component&gt; team;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Organization</span><span class="params">(List&lt;Component&gt; team)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.team = team;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Component component)</span> </span>&#123;</span><br><span class="line">        team.add(component);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(Component component)</span> </span>&#123;</span><br><span class="line">        team.remove(component);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Component <span class="title">getComponent</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> team.get(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Component component : team) &#123;</span><br><span class="line">            component.execute();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 士兵</span></span><br><span class="line">        Solider solider1 = <span class="keyword">new</span> Solider();</span><br><span class="line">        Solider solider2 = <span class="keyword">new</span> Solider();</span><br><span class="line">        Solider solider3 = <span class="keyword">new</span> Solider();</span><br><span class="line">        <span class="comment">// 基层部队</span></span><br><span class="line">        Organization teamJunior1 = <span class="keyword">new</span> Organization(Arrays.asList(solider1,solider2,solider3));</span><br><span class="line">        Organization teamJunior2 = <span class="keyword">new</span> Organization(Arrays.asList(solider1,solider2));</span><br><span class="line">        Organization teamJunior3 = <span class="keyword">new</span> Organization(Arrays.asList(solider2,solider3));</span><br><span class="line">        <span class="comment">// 中级部队</span></span><br><span class="line">        Organization teamSenior1 = <span class="keyword">new</span> Organization(Arrays.asList(teamJunior1, teamJunior2,solider1));</span><br><span class="line">        Organization teamSenior2 = <span class="keyword">new</span> Organization(Arrays.asList(solider2, teamJunior2,teamJunior3));</span><br><span class="line">        <span class="comment">// 高级部队</span></span><br><span class="line">        Organization commander = <span class="keyword">new</span> Organization(Arrays.asList(teamSenior1, teamSenior2));</span><br><span class="line">        commander.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>如果需要实现树状对象结构，可以使用组合模式。</p>
+</li>
+<li><p>希望客户端代码以相同方式处理简单和复杂元素可以使用该模式。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/30/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1881,185 +2048,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jimmy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jimmy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/" itemprop="url">《redis深度历险》十-LRU FU</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-17T23:25:36+08:00">
-                2021-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/17/%E3%80%8Aredis%E6%B7%B1%E5%BA%A6%E5%8E%86%E9%99%A9%E3%80%8B%E5%8D%81-LRU-LFU/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="LFU-VS-LRU"><a href="#LFU-VS-LRU" class="headerlink" title="LFU VS LRU"></a>LFU VS LRU</h3><p>LFU：least frequntly used，按最近的访问频率淘汰，比LRU更加精准的表示了一个key的被访问热度。</p>
-<h4 id="redis对象的热度"><a href="#redis对象的热度" class="headerlink" title="redis对象的热度"></a>redis对象的热度</h4><p>redis的所有对象头结构中都有一个24bit的字段，用来记录对象的热度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef struct redisObject &#123;</span><br><span class="line">	unsigned type:4; &#x2F;&#x2F; 对象类型如 zset,set,hash等</span><br><span class="line">	unsigned encoding:4 &#x2F;&#x2F; 对象编码如ziplist,intset,skiplist等</span><br><span class="line">	unsigned lru:24; &#x2F;&#x2F; 对象的热度</span><br><span class="line">	int refcount; &#x2F;&#x2F; 引用计数</span><br><span class="line">	void *ptr &#x2F;&#x2F; 对象的body</span><br><span class="line">&#125;robj</span><br></pre></td></tr></table></figure>
-
-<h4 id="LRU"><a href="#LRU" class="headerlink" title="LRU"></a>LRU</h4><p>Least Recently Used</p>
-<p>在 LRU 模式下， lru 字段存储的是 Redis 时钟 server.lruclocko Redis 时钟是一个24bit 的整数，默认是 Unix 时间戳对 2^24 取模的结果，大约 97 天清零一次 。<strong>当某个 key被访问一次，它的对象头结构的 lru字段值就会被更新为 server.lruclock。</strong>  </p>
-<p>如果 server.lruclock 没有折返(对 2^24 取模〉，它就是一直递增的，这意昧着对 象的 lru字段不会超过 server.lruclock的值。下方左图</p>
-<p>如果超过了，说明 server.lruclock折返了。 通过这个逻辑就可以精准计算出对象多长时间没有被访问一一即“对象的空闲时间”。（ 下方右图有些问题，lru不可能超过max的，小于等于max）</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201126000223733-844872872.png" alt=""></p>
-<h4 id="LFU"><a href="#LFU" class="headerlink" title="LFU"></a>LFU</h4><p>在LFU模式下，lru字段用来存储两个值，分别是ldt(last decrement time)16bit和logc(logistic counter)8bit</p>
-<p>loge 是 8 个 bit，<strong>用来存储访问频次</strong>，因为 8 个 bit 能表示的最大整数值为 255，存储频次肯定远远不够，所以这 8 个 bit 存储的是频次的对数值，并且这个 值还会随时间衰减，如果它的值比较小，那么就很容易被回收。为了确保新创建的 对象不被回收，新对象的这 8 个 bit 会被初始化为一个大于零的值 LFU_INIT_VAL(默认是=5) 。</p>
-<p>ldt 是 16 个 bit，<strong>用来存储上一次 loge 的更新时间</strong>。因为只有 16 个 bit，所以 精度不可能很高。它取的是分钟时间戳对 i6 进行取模，大约每隔 45 天就会折返。 下呈现了折返前后空闲时间的不同计算规则。同 LRU 模式一样，我们也可以 使用这个逻辑计算出对象的空闲时间，只不过精度是分钟级别的。图中的 server.unixtime 是当前 Redis 记录的系统时间戳，和 server.lruclock 一样，它也是每毫秒 更新一次。  </p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201126002341230-606280578.png" alt=""></p>
-<p>ldt不是在对象被访问时更新的，而是在redis的淘汰逻辑进行时更新的，每次淘汰都是采用随机策略， 随机挑选若干个 key，更新这个 key 的“热度”，淘汰掉“热度”最低的 key。因为 Redis 采用的是随机算法，如果 key 比较多的话，那么 ldt 更新得可能会比较慢。不 过既然它是分钟级别的精度，也没有必要更新得过于频繁。 </p>
-<p>ldt 更新的同时也会一同衰减 loge 的值。衰减也有特定的算法。</p>
-<p>总而言之，就是通过logc和ldt相互结合，可以获得某个键的使用频率。</p>
-<h4 id="缓存时间戳"><a href="#缓存时间戳" class="headerlink" title="缓存时间戳"></a>缓存时间戳</h4><p>redis每一次获取系统时 间戳都是一次系统调用， 系统调用相对来说是比较费时间的，作为单线程的Redis承 受不起，所以它需要对时间进行缓存，获取时间都是从缓存中直接拿。 </p>
-<h3 id="惰性删除"><a href="#惰性删除" class="headerlink" title="惰性删除"></a>惰性删除</h3><h4 id="共享机制"><a href="#共享机制" class="headerlink" title="共享机制"></a>共享机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; sadd heat wade bosh james</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; sadd cavs irving love james</span><br><span class="line">(integer) 3</span><br><span class="line">127.0.0.1:6379&gt; sunionstore players heat cavs</span><br><span class="line">(integer) 5</span><br><span class="line">127.0.0.1:6379&gt; smembers players</span><br><span class="line">1) &quot;wade&quot;</span><br><span class="line">2) &quot;bosh&quot;</span><br><span class="line">3) &quot;james&quot;</span><br><span class="line">4) &quot;love&quot;</span><br><span class="line">5) &quot;irving&quot;</span><br></pre></td></tr></table></figure>
-
-<p>新的集合包含了旧集合的所有元素，里面有一个trick，底层的字符串对象被共享了。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202011/1496566-20201127003226927-1021003802.png" alt=""></p>
-<p>为什么对象共享是懒惰删除的最大障碍呢，因为懒惰删除相当于彻底砍掉某个树枝，将它扔到异步删除队列里去，这里是彻底删除，如果底层的对象是被共享的，就不是彻底删除，下图就不是彻底删除。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1496566/202101/1496566-20210117232817612-896419831.png" alt=""></p>
-<p>为了支持懒惰删除，就必须实现无共享设计。</p>
-<h4 id="异步删除的实现"><a href="#异步删除的实现" class="headerlink" title="异步删除的实现"></a>异步删除的实现</h4><p>主线程将删除任务传递给异步线程，他是通过一个普通的双向链表实现的，因为链表需要支持多线程并发操作，所以需要有锁来保护。</p>
-<p>执行懒惰删除时， Redis 将删除操作的相关参数封装成一个 bio_job 结构，然后 追加到链表尾部。异步线程通过遍历链表摘取 job 元素来挨个执行异步任务 。 </p>
-<h4 id="队列安全"><a href="#队列安全" class="headerlink" title="队列安全"></a>队列安全</h4><p>前面提到任务队列是个不安全的双向链表 ， 需要使用锁来保护它。当主线程 将任务追加到队列之前需要给它加锁，追加完毕后，再释放锁，还需要唤醒异步线 程一一 如果其在休眠的话。 </p>
-<p>异步线程需要对任务队列进行轮询处理，依次从链表表头摘取元素逐个处理 。 摘取元素的时候也需要加锁，摘出来之后再解锁。如果一个元素都没有，它需要等待， 直到主线程来唤醒它继续工作。 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2110,7 +2098,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
